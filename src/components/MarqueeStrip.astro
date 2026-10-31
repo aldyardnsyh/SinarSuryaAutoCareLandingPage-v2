@@ -1,0 +1,55 @@
+---
+// MarqueeStrip — band oranye teks berjalan, CSS keyframes murni
+// Duplikasi konten untuk loop mulus + aria-hidden pada duplikat.
+const items = [
+  'Servis Rutin',
+  'Ganti Oli',
+  'AC Mobil',
+  'Kaki-kaki',
+  'Cuci Hidrolik',
+  'Steam Wash',
+  'Vacuum & Detailing',
+  'Kelistrikan & Aki',
+];
+---
+
+<section class="marquee" aria-label="Daftar layanan berjalan">
+  <div class="marquee-track">
+    {
+      [false, true].map((hidden) => (
+        <div class="marquee-group" aria-hidden={hidden || undefined}>
+          {items.map((item) => (
+            <>
+              <span class="item">{item}</span>
+              <span class="star" aria-hidden="true">✦</span>
+            </>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .marquee {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    overflow: hidden;
+    padding: 0.55rem 0;
+    user-select: none;
+  }
+  .marquee-group {
+    display: inline-flex;
+    align-items: center;
+  }
+  .item {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-inline: 0.9rem;
+  }
+  .star {
+    opacity: 0.85;
+  }
+</style>
