@@ -1,0 +1,142 @@
+---
+// KontakLokasi — info kontak + embed Google Maps listing resmi bengkel (lazy iframe)
+import { SITE, waLink, telLink, MAPS_EMBED_URL } from '../data/site';
+import { JAM } from '../data/hours';
+---
+
+<section class="kontak container" id="kontak">
+  <p class="eyebrow">05 - Kontak &amp; Lokasi</p>
+  <h2>Kunjungi Bengkel Kami</h2>
+
+  <div class="grid">
+    <div class="info">
+      <ul>
+        <li>
+          <span class="label">Alamat</span>
+          <span>{SITE.address.full}</span>
+          <span class="area">Mudah dijangkau dari Bojongsoang, Dayeuhkolot, Baleendah, dan Buahbatu.</span>
+        </li>
+        <li>
+          <span class="label">Plus Code</span>
+          <span>{SITE.address.plusCode}</span>
+        </li>
+        <li>
+          <span class="label">Telepon</span>
+          <a href={telLink()}>{SITE.phone}</a>
+        </li>
+        <li>
+          <span class="label">WhatsApp</span>
+          <a href={waLink('saya mau konfirmasi lokasi dan jadwal buka bengkel.')} target="_blank" rel="noopener noreferrer">{SITE.whatsappDisplay}</a>
+        </li>
+        <li>
+          <span class="label">Jam Servis Mobil</span>
+          <span>{JAM.servis.label}</span>
+        </li>
+        <li>
+          <span class="label">Jam Cuci Hidrolik</span>
+          <span>{JAM.cuci.label}</span>
+        </li>
+        {
+          (SITE.social.facebook || SITE.social.instagram) && (
+            <li>
+              <span class="label">Sosial Media</span>
+              <span class="sosmed">
+                {SITE.social.facebook && (
+                  <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer">
+                    Facebook
+                  </a>
+                )}
+                {SITE.social.instagram && (
+                  <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer">
+                    Instagram
+                  </a>
+                )}
+              </span>
+            </li>
+          )
+        }
+      </ul>
+
+      <a class="btn btn-secondary" href={SITE.mapsShortLink} target="_blank" rel="noopener noreferrer">
+        Buka di Google Maps <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="map">
+      <iframe
+        src={MAPS_EMBED_URL}
+        title="Peta lokasi Sinar Surya Auto Care, Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kontak {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--color-zinc);
+  }
+  h2 {
+    font-size: var(--h2);
+    margin: var(--space-xs) 0 var(--space-lg);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  ul {
+    list-style: none;
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-zinc);
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .area {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+  a {
+    color: inherit;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+  .sosmed {
+    display: flex;
+    gap: var(--space-md);
+  }
+  .map {
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-panel);
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  @media (max-width: 820px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
