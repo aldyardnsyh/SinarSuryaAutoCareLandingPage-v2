@@ -1,0 +1,32 @@
+---
+// Logo SVG matahari + gear 
+interface Props {
+  size?: number;
+}
+const { size = 34 } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Logo Sinar Surya Auto Care"
+>
+  <!-- gear -->
+  <path
+    d="M24 12a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"
+    fill="#FF6B1A"></path>
+  <g fill="#FF6B1A">
+    <rect x="21.5" y="2" width="5" height="7" rx="1"></rect>
+    <rect x="21.5" y="39" width="5" height="7" rx="1"></rect>
+    <rect x="2" y="21.5" width="7" height="5" rx="1"></rect>
+    <rect x="39" y="21.5" width="7" height="5" rx="1"></rect>
+    <rect x="7.4" y="8.9" width="5" height="7" rx="1" transform="rotate(-45 9.9 12.4)"></rect>
+    <rect x="35.6" y="32.1" width="5" height="7" rx="1" transform="rotate(-45 38.1 35.6)"></rect>
+    <rect x="35.6" y="8.9" width="5" height="7" rx="1" transform="rotate(45 38.1 12.4)"></rect>
+    <rect x="7.4" y="32.1" width="5" height="7" rx="1" transform="rotate(45 9.9 35.6)"></rect>
+  </g>
+</svg>

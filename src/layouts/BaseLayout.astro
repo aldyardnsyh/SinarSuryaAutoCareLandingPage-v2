@@ -1,0 +1,124 @@
+---
+// BaseLayout — <head>, SEO meta, OG/Twitter card, JSON-LD AutoRepair, font loading.
+import '@fontsource/anton';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/jetbrains-mono/600.css';
+import '../styles/tokens.css';
+import { SITE, SITE_URL, MAPS_EMBED_URL } from '../data/site';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Bengkel Mobil & Cuci Hidrolik Bojongsoang - Sinar Surya Auto Care',
+  description = 'Sinar Surya Auto Care, bengkel mobil dan cuci hidrolik di Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung. Servis rutin, ganti oli, AC, kaki-kaki, sampai steam wash. Buka setiap hari 07.00 sampai 17.00.',
+} = Astro.props;
+
+const canonical = new URL('/', SITE_URL).href;
+const ogImage = new URL('/og-image.jpg', SITE_URL).href;
+
+// JSON-LD dari data listing Google Maps resmi (alamat, geo, jam operasional).
+const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Sinyal lokasi untuk mesin pencari -->
+    <meta name="geo.region" content="ID-JB" />
+    <meta name="geo.placename" content="Bojongsoang, Kabupaten Bandung" />
+    <meta name="geo.position" content={`${SITE.geo.lat};${SITE.geo.lng}`} />
+    <meta name="ICBM" content={`${SITE.geo.lat}, ${SITE.geo.lng}`} />
+
+    <!-- Open Graph / preview share WhatsApp & Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content="Sinar Surya Auto Care - Bengkel Mobil & Cuci Hidrolik Bojongsoang" />
+    <meta property="og:description" content="Servis rutin, perbaikan, sampai cuci mobil hidrolik di Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung." />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mobil diangkat lift hidrolik di Sinar Surya Auto Care Bojongsoang" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="id_ID" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sinar Surya Auto Care - Bengkel Mobil & Cuci Hidrolik Bojongsoang" />
+    <meta name="twitter:description" content="Servis rutin, ganti oli, AC, kaki-kaki, sampai cuci hidrolik & steam wash di Bojongsoang, Bandung. Buka setiap hari." />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'AutoRepair',
+      '@id': `${SITE_URL}/#business`,
+      name: SITE.name,
+      description: 'Bengkel mobil dan cuci hidrolik di Bojongsoang, Kabupaten Bandung. Servis rutin, ganti oli, service AC, kaki-kaki, kelistrikan, cuci mobil hidrolik, steam wash, vacuum dan detailing.',
+      url: SITE_URL,
+      telephone: SITE.phoneIntl,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: SITE.address.street,
+        addressLocality: 'Bojongsoang',
+        addressRegion: SITE.address.region,
+        postalCode: SITE.address.postalCode,
+        addressCountry: 'ID',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: SITE.geo.lat,
+        longitude: SITE.geo.lng,
+      },
+      ...(sameAs.length ? { sameAs } : {}),
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          opens: '07:00',
+          closes: '17:00',
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Sunday'],
+          opens: '08:00',
+          closes: '16:00',
+        },
+      ],
+      image: ogImage,
+      hasMap: SITE.mapsShortLink,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Layanan Sinar Surya Auto Care',
+        itemListElement: [
+          'Servis Rutin & Tune Up',
+          'Ganti Oli & Filter',
+          'Service AC Mobil',
+          'Kaki-kaki & Rem',
+          'Kelistrikan & Aki',
+          'Cuci Mobil Hidrolik',
+          'Steam Wash Interior',
+          'Vacuum & Detailing',
+        ].map((nama) => ({
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: nama },
+        })),
+      },
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
