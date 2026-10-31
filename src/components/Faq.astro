@@ -1,0 +1,112 @@
+---
+// FAQ — tanya jawab yang paling sering dicari orang lokal + FAQPage JSON-LD.
+// Semua jawaban berdasarkan data real (jam operasional, QRIS dari ulasan Google).
+import { JAM } from '../data/hours';
+
+const faq = [
+  {
+    q: 'Di mana lokasi Sinar Surya Auto Care?',
+    a: `Kami di ${'Jl. Cijagra No.8, Bojongsoang, Kec. Bojongsoang, Kabupaten Bandung'} — mudah dijangkau dari Bojongsoang, Dayeuhkolot, Baleendah, dan Buahbatu. Cari "Sinar Surya Auto Care" di Google Maps.`,
+  },
+  {
+    q: 'Servis mobil hari Minggu buka tidak?',
+    a: `Servis mobil hanya Senin-Sabtu ${JAM.servis.seninSabtu.open}-${JAM.servis.seninSabtu.close}. Hari Minggu servis tutup, tetapi cuci hidrolik tetap buka pukul ${JAM.cuci.minggu?.open} sampai ${JAM.cuci.minggu?.close}.`,
+  },
+  {
+    q: 'Cuci hidrolik itu apa bedanya dengan cuci mobil biasa?',
+    a: 'Mobil diangkat dengan lift hidrolik sehingga bagian bawah (kolong sasis) ikut tercuci bersih. Cuci biasa hanya membersihkan bagian luar yang terlihat.',
+  },
+  {
+    q: 'Bagaimana cara booking servis atau cuci mobil?',
+    a: 'Cukup chat WhatsApp kami. Kirim keluhan atau foto mobil, kami cek dan jelaskan estimasinya, lalu Anda datang sesuai jadwal yang disepakati.',
+  },
+  {
+    q: 'Bisa bayar pakai QRIS?',
+    a: 'Bisa. Pembayaran tersedia tunai maupun QRIS, jadi tidak perlu bawa uang tunai.',
+  },
+];
+---
+
+<section class="faq container" id="faq" aria-labelledby="judul-faq">
+  <p class="eyebrow">06 - Tanya Jawab</p>
+  <h2>Yang Sering Ditanyakan</h2>
+
+  <div class="list">
+    {
+      faq.map((item) => (
+        <details>
+          <summary>{item.q}</summary>
+          <p>{item.a}</p>
+        </details>
+      ))
+    }
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  })} />
+</section>
+
+<style>
+  .faq {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--color-zinc);
+  }
+  h2 {
+    font-size: var(--h2);
+    margin: var(--space-xs) 0 var(--space-lg);
+  }
+  .list {
+    max-width: 52rem;
+  }
+  details {
+    background: var(--color-panel);
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-sm);
+    transition: border-color 0.15s ease;
+  }
+  details[open],
+  details:hover {
+    border-color: var(--color-accent);
+  }
+  summary {
+    cursor: pointer;
+    padding: var(--space-md) var(--space-lg);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    list-style: none;
+    position: relative;
+    padding-right: 2.6rem;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    position: absolute;
+    right: var(--space-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-accent);
+    font-size: 1.3rem;
+    font-family: var(--font-mono);
+  }
+  details[open] summary::after {
+    content: '\2212';
+  }
+  details p {
+    margin: 0;
+    padding: 0 var(--space-lg) var(--space-md);
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+</style>
