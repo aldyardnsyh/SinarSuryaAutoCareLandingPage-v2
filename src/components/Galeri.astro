@@ -1,0 +1,124 @@
+---
+// Galeri — scroll horizontal full-width + scroll-snap, CSS murni
+// Foto asli bengkel dari listing Google Maps, sudah di-crop per-slot
+// lewat scripts/crop-images.mjs agar proporsional (bukan foto stok).
+const fotos = [
+  {
+    src: '/images/galeri-tampak-depan-bengkel.webp',
+    label: 'Tampak Depan',
+    alt: 'Tampak depan bengkel Sinar Surya Auto Care di Jl. Cijagra No.8, Bojongsoang, Bandung',
+  },
+  {
+    src: '/images/galeri-lift-hidrolik.webp',
+    label: 'Lift Hidrolik',
+    alt: 'Mobil diangkat lift hidrolik untuk cuci kolong di Sinar Surya Auto Care Bojongsoang, Bandung',
+  },
+  {
+    src: '/images/galeri-antrian-cuci.webp',
+    label: 'Antrian Cuci',
+    alt: 'Antrian mobil ramai saat pencucian di Sinar Surya Auto Care Bojongsoang, Bandung',
+  },
+  {
+    src: '/images/galeri-cuci-busa.webp',
+    label: 'Cuci Busa',
+    alt: 'Mobil diberi busa sabun saat dicuci di Sinar Surya Auto Care, cuci mobil hidrolik Bojongsoang',
+  },
+  {
+    src: '/images/galeri-area-servis.webp',
+    label: 'Area Servis',
+    alt: 'Mekanik mengerjakan mobil di atas lift di area servis Sinar Surya Auto Care Bojongsoang',
+  },
+  {
+    src: '/images/galeri-servis-mesin.webp',
+    label: 'Servis Mesin',
+    alt: 'Mekanik mengerjakan servis mesin mobil SUV di bengkel Sinar Surya Auto Care Bojongsoang',
+  },
+  {
+    src: '/images/galeri-pengerjaan-mesin.webp',
+    label: 'Pengerjaan Mesin',
+    alt: 'Proses pengerjaan mesin mobil Toyota di bengkel Sinar Surya Auto Care Bojongsoang, Bandung',
+  },
+  {
+    src: '/images/galeri-area-cuci.webp',
+    label: 'Area Cuci',
+    alt: 'Mobil menunggu giliran di area cuci Sinar Surya Auto Care Bojongsoang',
+  },
+  {
+    src: '/images/galeri-detailing.webp',
+    label: 'Detailing',
+    alt: 'Mobil dibuka kap dan pintunya saat detailing di bengkel Sinar Surya Auto Care Bojongsoang',
+  },
+];
+---
+
+<section class="galeri" id="galeri">
+  <div class="container">
+    <p class="eyebrow">04 - Galeri</p>
+    <h2>Sekilas Bengkel Kami</h2>
+    <p class="hint">Geser ke samping untuk melihat foto lainnya →</p>
+  </div>
+
+  <div class="strip" tabindex="0" role="region" aria-label="Galeri foto bengkel, dapat digeser horizontal">
+    {
+      fotos.map((f) => (
+        <figure>
+          <img src={f.src} alt={f.alt} width="1200" height="750" loading="lazy" />
+          <figcaption>{f.label}</figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .galeri {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--color-zinc);
+  }
+  h2 {
+    font-size: var(--h2);
+    margin: var(--space-xs) 0 var(--space-xs);
+  }
+  .hint {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0 0 var(--space-lg);
+  }
+  .strip {
+    display: flex;
+    gap: var(--space-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+    padding-bottom: var(--space-md);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-zinc) transparent;
+  }
+  figure {
+    flex: 0 0 clamp(260px, 38vw, 420px);
+    margin: 0;
+    scroll-snap-align: start;
+    background: var(--color-panel);
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  img {
+    width: 100%;
+    height: auto; /* atribut height HTML tidak boleh jadi CSS px, biarkan aspect-ratio bekerja */
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+  figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    padding: var(--space-sm) var(--space-md);
+  }
+</style>
