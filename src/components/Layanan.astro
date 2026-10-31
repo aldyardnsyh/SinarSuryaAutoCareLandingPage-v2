@@ -1,0 +1,150 @@
+---
+// Layanan — list bernomor besar (bukan kartu), Grup A + Grup B
+// Tanpa harga. Tiap baris punya link tanya harga WhatsApp.
+import { GRUP_A, GRUP_B } from '../data/layanan';
+import { waLayanan } from '../data/site';
+---
+
+<section class="layanan container" id="layanan">
+  <p class="eyebrow">01 - Layanan</p>
+  <h2>Layanan Bengkel Mobil &amp; Cuci Hidrolik</h2>
+  <p class="lead">Pengerjaan teliti untuk perawatan, perbaikan, dan pencucian kendaraan Anda.</p>
+
+  <div class="group-head">
+    <h3><span class="sq" aria-hidden="true"></span> Grup A: Servis &amp; Perbaikan</h3>
+  </div>
+  <ol class="rows">
+    {
+      GRUP_A.map((l, i) => (
+        <li>
+          <span class="num" aria-hidden="true">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <div class="body">
+            <h4>{l.nama}</h4>
+            <p>{l.deskripsi}</p>
+          </div>
+          <a class="wa-link" href={waLayanan(l.nama)} target="_blank" rel="noopener noreferrer">
+            Tanya harga via WhatsApp <span aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="group-head grup-b">
+    <h3><span class="sq" aria-hidden="true"></span> Grup B: Cuci Hidrolik &amp; Steam</h3>
+  </div>
+  <ol class="rows" start={GRUP_A.length + 1}>
+    {
+      GRUP_B.map((l, i) => (
+        <li>
+          <span class="num" aria-hidden="true">
+            {String(GRUP_A.length + i + 1).padStart(2, '0')}
+          </span>
+          <div class="body">
+            <h4>{l.nama}</h4>
+            <p>{l.deskripsi}</p>
+          </div>
+          <a class="wa-link" href={waLayanan(l.nama)} target="_blank" rel="noopener noreferrer">
+            Tanya harga via WhatsApp <span aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .layanan {
+    padding-block: var(--space-xl);
+  }
+  h2 {
+    font-size: var(--h2);
+    margin: var(--space-xs) 0 var(--space-sm);
+  }
+  .lead {
+    color: var(--color-muted);
+    margin: 0 0 var(--space-lg);
+  }
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0 0;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-panel);
+    border: 1px solid var(--color-zinc);
+    border-top: 4px solid var(--color-accent);
+  }
+  .group-head h3 {
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+  }
+  .sq {
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent);
+  }
+  .rows {
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+  }
+  .rows li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-md) var(--space-md);
+    border-bottom: 1px solid var(--color-zinc);
+    transition: background 0.15s ease;
+  }
+  .rows li:hover {
+    background: var(--color-panel);
+  }
+  .num {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-accent);
+    line-height: 1;
+    min-width: 2.2ch;
+  }
+  .body h4 {
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+  }
+  .body p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+  .wa-link {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .wa-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  @media (max-width: 820px) {
+    .rows li {
+      grid-template-columns: auto 1fr;
+    }
+    .wa-link {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+</style>
