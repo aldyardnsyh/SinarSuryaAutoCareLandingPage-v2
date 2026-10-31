@@ -1,0 +1,103 @@
+---
+// TentangKami — H2 + 2 paragraf + info rows
+import { SITE } from '../data/site';
+import { JAM } from '../data/hours';
+---
+
+<section class="tentang container" id="tentang">
+  <p class="eyebrow">00 - Tentang Kami</p>
+  <h2>Bengkel Keluarga di Bojongsoang</h2>
+
+  <div class="cols">
+    <div class="paras">
+      <p>
+        Sinar Surya Auto Care adalah bengkel mobil sekaligus tempat cuci hidrolik yang ada di
+        Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung. Kami melayani perawatan dan perbaikan
+        mobil, mulai dari servis rutin sampai cuci hidrolik dan steam wash.
+      </p>
+      <p>
+        Mobil itu dipakai buat aktivitas harian: kerja, antar anak sekolah, liburan. Karena itu
+        setiap pengerjaan kami utamakan kerapian kerja dan komunikasi yang enak diajak bicara.
+        Keluhan didengar dulu, baru dikerjakan.
+      </p>
+    </div>
+
+    <ul class="info">
+      <li>
+        <span class="label">Alamat</span>
+        <span>{SITE.address.full}</span>
+      </li>
+      <li>
+        <span class="label">Jam Operasional</span>
+        <span>Servis: {JAM.servis.label}</span>
+        <span>Cuci Hidrolik: {JAM.cuci.label}</span>
+      </li>
+      <li>
+        <span class="label">Telepon / WhatsApp</span>
+        <span>
+          <a href={`tel:${SITE.phoneIntl}`}>{SITE.phone}</a> atau
+          <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer"
+            >chat WhatsApp</a
+          >
+        </span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .tentang {
+    padding-block: var(--space-xl);
+  }
+  h2 {
+    font-size: var(--h2);
+    margin: var(--space-xs) 0 var(--space-lg);
+    max-width: 22ch;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  .paras p {
+    color: var(--color-muted);
+    margin: 0 0 var(--space-md);
+    font-size: 1.02rem;
+  }
+  .info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    background: var(--color-panel);
+  }
+  .info li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: var(--space-md);
+  }
+  .info li + li {
+    border-top: 1px solid var(--color-zinc);
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .info a {
+    color: inherit;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+  @media (max-width: 860px) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
