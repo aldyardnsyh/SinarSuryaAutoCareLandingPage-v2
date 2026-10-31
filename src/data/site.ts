@@ -8,9 +8,10 @@ export const SITE = {
   name: 'Sinar Surya Auto Care',
   shortName: 'SSAC',
   tagline: 'Bengkel Mobil & Cuci Hidrolik',
-  phone: '022-7502999',
-  phoneIntl: '+62227502999',
-  // Nomor WhatsApp AKTIF dari client (konfirmasi 31 Okt 2026) — dipakai semua tombol chat
+  // Nomor telepon/WA AKTIF satu-satunya (konfirmasi client 31 Okt 2026;
+  // nomor lama 022-7502999 sudah tidak aktif) — dipakai di semua lini
+  phone: '0812-2022-203',
+  phoneIntl: '+628122022203',
   whatsapp: '628122022203',
   whatsappDisplay: '0812-2022-203',
   mobileIntl: '+628122022203',
