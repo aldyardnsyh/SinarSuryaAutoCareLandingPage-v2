@@ -1,0 +1,45 @@
+---
+// index.astro — komposisi seluruh section halaman
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TopInfoBar from '../components/TopInfoBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import MarqueeStrip from '../components/MarqueeStrip.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import TentangKami from '../components/TentangKami.astro';
+import Layanan from '../components/Layanan.astro';
+import SplitShowcase from '../components/SplitShowcase.astro';
+import TanyaHargaCTA from '../components/TanyaHargaCTA.astro';
+import CaraBooking from '../components/CaraBooking.astro';
+import Testimoni from '../components/Testimoni.astro';
+import Galeri from '../components/Galeri.astro';
+import KontakLokasi from '../components/KontakLokasi.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<BaseLayout>
+  <TopInfoBar />
+  <Navbar />
+
+  <main>
+    <Hero />
+    <MarqueeStrip />
+    <TrustStrip />
+    <TentangKami />
+    <Layanan />
+    <SplitShowcase />
+    <TanyaHargaCTA />
+    <CaraBooking />
+    <Testimoni />
+    <Galeri />
+    <KontakLokasi />
+    <Faq />
+    <CtaBand />
+  </main>
+
+  <Footer />
+  <WhatsAppFloat />
+</BaseLayout>

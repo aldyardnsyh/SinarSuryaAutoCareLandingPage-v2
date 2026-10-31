@@ -1,0 +1,174 @@
+---
+// Footer — hitam, border atas hazard-stripe
+import Logo from './Logo.astro';
+import { SITE, telLink } from '../data/site';
+import { JAM } from '../data/hours';
+
+// Tahun berjalan saat build; ikut ter-update setiap kali situs di-rebuild/deploy.
+const tahun = new Date().getFullYear();
+
+const menu = [
+  { href: '#beranda', label: 'Beranda' },
+  { href: '#tentang', label: 'Tentang' },
+  { href: '#layanan', label: 'Layanan' },
+  { href: '#galeri', label: 'Galeri' },
+  { href: '#kontak', label: 'Kontak' },
+];
+---
+
+<footer class="footer">
+  <div class="hazard-stripe" aria-hidden="true"></div>
+
+  <div class="container grid">
+    <div class="col brand-col">
+      <div class="brand">
+        <Logo size={30} />
+        <span>{SITE.name}</span>
+      </div>
+      <p>
+        Bengkel mobil dan cuci hidrolik di Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung.
+        Servis rutin sampai steam wash dalam satu tempat.
+      </p>
+    </div>
+
+    <nav class="col" aria-label="Navigasi footer">
+      <h3>Navigasi</h3>
+      <ul>
+        {
+          menu.map((m) => (
+            <li>
+              <a href={m.href}>{m.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="col">
+      <h3>Jam Operasional</h3>
+      <p><strong>Servis mobil</strong><br />{JAM.servis.label}</p>
+      <p><strong>Cuci hidrolik</strong><br />{JAM.cuci.label}</p>
+    </div>
+
+    <div class="col">
+      <h3>Kontak</h3>
+      <ul>
+        <li>{SITE.address.full}</li>
+        <li><a href={telLink()}>{SITE.phone}</a></li>
+        <li><a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+      </ul>
+      <ul class="sosmed">
+        {
+          SITE.social.instagram && (
+            <li>
+              <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer">
+                Instagram <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          )
+        }
+        {
+          SITE.social.facebook && (
+            <li>
+              <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer">
+                Facebook <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          )
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="container bottom">
+    <p>© {tahun} {SITE.name} · Bojongsoang, Bandung</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #0e0f10;
+    border-top: 1px solid var(--color-zinc);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: var(--space-xl);
+    padding-block: var(--space-xl);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .brand-col p {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+  h3 {
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-zinc);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  li,
+  .col p {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-accent);
+  }
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .bottom {
+    border-top: 1px solid var(--color-zinc);
+    padding-block: var(--space-md);
+  }
+  .sosmed {
+    margin-top: var(--space-md);
+  }
+  .sosmed a {
+    color: var(--color-accent);
+  }
+  .bottom p {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+  }
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+</style>

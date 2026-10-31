@@ -1,0 +1,40 @@
+---
+// CtaBand — CTA band penutup
+import { SITE, waLink, telLink } from '../data/site';
+---
+
+<section class="cta" aria-labelledby="judul-cta">
+  <div class="container inner">
+    <h2 id="judul-cta">Mobil Anda butuh servis atau sekadar cuci bersih?</h2>
+    <div class="actions">
+      <a class="btn btn-primary" href={waLink('saya mau tanya soal servis atau cuci mobil.')} target="_blank" rel="noopener noreferrer">Chat WhatsApp</a>
+      <a class="btn btn-secondary" href={telLink()}>Telepon {SITE.phone}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    border-top: 1px solid var(--color-zinc);
+    background:
+      repeating-linear-gradient(-45deg, rgba(255, 107, 26, 0.06) 0 14px, transparent 14px 28px),
+      var(--color-base);
+    padding-block: var(--space-xl);
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+  }
+  h2 {
+    font-size: var(--h2);
+    max-width: 20ch;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+</style>
