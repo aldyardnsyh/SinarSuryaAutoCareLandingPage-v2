@@ -1,0 +1,51 @@
+---
+// TanyaHargaCTA — band oranye pengganti pricelist
+import { waLink } from '../data/site';
+---
+
+<section class="tanya-harga" aria-labelledby="judul-tanya-harga">
+  <div class="container inner">
+    <div>
+      <h2 id="judul-tanya-harga">Butuh Info Harga?</h2>
+      <p>
+        Setiap kendaraan berbeda kondisi. Chat kami, kirim keluhan atau foto mobil Anda, dan kami
+        bantu cek.
+      </p>
+    </div>
+    <a
+      class="btn btn-dark"
+      href={waLink('saya mau tanya estimasi biaya untuk mobil saya. Keluhannya [jelaskan keluhan], nanti saya kirim fotonya juga.')}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Chat WhatsApp <span aria-hidden="true">➜</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .tanya-harga {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    padding-block: var(--space-xl);
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+  }
+  h2 {
+    font-size: var(--h2);
+    margin-bottom: var(--space-sm);
+  }
+  p {
+    margin: 0;
+    max-width: 44ch;
+    font-weight: 500;
+  }
+  .btn-dark {
+    font-size: 1.15rem;
+  }
+</style>
