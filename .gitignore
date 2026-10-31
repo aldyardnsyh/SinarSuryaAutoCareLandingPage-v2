@@ -1,0 +1,16 @@
+# Build output
+dist/
+
+# Dependencies
+node_modules/
+
+# Astro
+.astro/
+
+# Environment & local
+.env
+.env.*
+.DS_Store
+
+# Sumber foto mentah (tidak untuk deploy)
+assets-source/
