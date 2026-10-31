@@ -8,7 +8,7 @@ import { SITE, waLink, telLink } from '../data/site';
     <h2 id="judul-cta">Mobil Anda butuh servis atau sekadar cuci bersih?</h2>
     <div class="actions">
       <a class="btn btn-primary" href={waLink('saya mau tanya soal servis atau cuci mobil.')} target="_blank" rel="noopener noreferrer">Chat WhatsApp</a>
-      <a class="btn btn-secondary" href={telLink()}>Telepon {SITE.phone}</a>
+      <a class="btn btn-secondary" href={`tel:${SITE.mobileIntl}`}>Telepon/WA {SITE.whatsappDisplay}</a>
     </div>
   </div>
 </section>
