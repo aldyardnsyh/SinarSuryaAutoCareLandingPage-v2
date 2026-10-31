@@ -1,0 +1,103 @@
+---
+// TopInfoBar — strip hitam font mono
+// Status ringkas realtime dari jam device user; detail per layanan ada di Hero.
+import { SITE } from '../data/site';
+---
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>📍 {SITE.address.short}</span>
+    <span class="sep" aria-hidden="true">|</span>
+    <!-- fallback statis (tanpa JS), diganti realtime oleh script di bawah -->
+    <span class="status" id="status-topbar" role="status">
+      <span class="dot" data-dot aria-hidden="true"></span>
+      <span data-teks>Buka setiap hari</span>
+      <span class="clock">&middot; ⏱ <span data-clock>--.--</span></span>
+    </span>
+    <span class="spacer" aria-hidden="true"></span>
+    <a class="phone" href={`tel:${SITE.phoneIntl}`}>📞 {SITE.phone}</a>
+  </div>
+</div>
+
+<style>
+  .topbar {
+    background: #0e0f10;
+    border-bottom: 1px solid var(--color-zinc);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 2.2rem;
+  }
+  .sep,
+  .spacer {
+    color: var(--color-zinc);
+  }
+  .spacer {
+    flex: 1;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    background: var(--color-zinc);
+  }
+  .dot[data-buka='true'] {
+    background: #10b981; /* hijau operasional */
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+  }
+  .dot[data-buka='false'] {
+    background: var(--color-accent);
+  }
+  .clock {
+    color: var(--color-zinc);
+  }
+  .phone {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  @media (max-width: 640px) {
+    .sep,
+    .spacer {
+      display: none;
+    }
+    .topbar-inner {
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script>
+  import { JAM, teksChip, jamLokal } from '../data/hours';
+
+  const el = document.getElementById('status-topbar');
+  const dot = el?.querySelector('[data-dot]');
+  const teks = el?.querySelector('[data-teks]');
+  const clock = el?.querySelector('[data-clock]');
+
+  function perbarui() {
+    if (!teks || !dot) return;
+    const now = new Date();
+    const s = teksChip(JAM.servis, now);
+    const c = teksChip(JAM.cuci, now);
+    dot.setAttribute('data-buka', String(s.buka || c.buka));
+    teks.textContent = s.buka || c.buka ? 'Buka sekarang' : 'Tutup';
+    if (clock) clock.textContent = jamLokal(now);
+  }
+
+  perbarui();
+  setInterval(perbarui, 1000);
+</script>

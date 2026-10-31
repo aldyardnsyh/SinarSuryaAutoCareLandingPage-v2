@@ -1,0 +1,209 @@
+---
+// Hero — full-bleed foto asli bengkel + overlay gelap, headline bertumpuk 3 baris
+//. Foto: listing Google Maps bengkel (mobil di lift hidrolik).
+import { SITE, waLink } from '../data/site';
+---
+
+<section class="hero" id="beranda">
+  <img
+    src="/images/hero-bengkel-cuci-hidrolik-bojongsoang.webp"
+    alt="Mobil diangkat lift hidrolik di Sinar Surya Auto Care, bengkel dan cuci mobil di Bojongsoang, Bandung"
+    width="1600"
+    height="900"
+    fetchpriority="high"
+    loading="eager"
+  />
+  <div class="overlay" aria-hidden="true"></div>
+
+  <div class="container hero-content">
+    <!-- status realtime ala telemetri: chip jam + chip per layanan (fallback statis tanpa JS) -->
+    <div class="status-live" role="status" aria-label="Status buka bengkel saat ini">
+      <span class="chip chip-clock">⏱ <span data-clock>--.--</span></span>
+      <span class="chip">
+        <span class="dot" data-dot="servis" aria-hidden="true"></span>
+        <span class="k">Servis</span>
+        <span data-teks="servis">Senin-Sabtu 08.00-17.00</span>
+      </span>
+      <span class="chip">
+        <span class="dot" data-dot="cuci" aria-hidden="true"></span>
+        <span class="k">Cuci</span>
+        <span data-teks="cuci">Setiap hari 07.00-16.00</span>
+      </span>
+    </div>
+
+    <h1>
+      <span>Servis Mobil.</span>
+      <span class="accent">Cuci Hidrolik.</span>
+      <span>Satu Garasi.</span>
+    </h1>
+
+    <p class="sub">
+      <strong>{SITE.name}</strong>, bengkel mobil dan cuci hidrolik di {SITE.address.short},
+      Kabupaten Bandung. Dikerjakan rapi dan sesuai jadwal.
+    </p>
+
+    <div class="cta-row">
+      <a
+        class="btn btn-primary"
+        href={waLink('saya mau booking jadwal servis atau cuci mobil. Mobil saya [merek/tipe], rencananya [hari/tanggal].')}
+        target="_blank"
+        rel="noopener noreferrer">Booking Sekarang</a
+      >
+      <a class="btn btn-secondary" href={waLink('saya mau tanya-tanya dulu soal layanan bengkel.')} target="_blank" rel="noopener noreferrer"
+        >Chat WhatsApp</a
+      >
+    </div>
+
+    <ul class="specs" aria-label="Layanan unggulan">
+      <li><span aria-hidden="true">■</span> Lift hidrolik</li>
+      <li><span aria-hidden="true">■</span> Cuci kolong</li>
+      <li><span aria-hidden="true">■</span> Steam wash interior</li>
+      <li><span aria-hidden="true">■</span> Vacuum &amp; detailing</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: min(88vh, 860px);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero > img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at center, transparent 0%, rgba(20, 20, 20, 0.55) 100%),
+      linear-gradient(to top, var(--color-base) 8%, rgba(20, 20, 20, 0.82) 45%, rgba(20, 20, 20, 0.45) 100%);
+  }
+  .hero-content {
+    padding-top: 7rem;
+    padding-bottom: var(--space-xl);
+    width: 100%;
+  }
+  .status-live {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin: 0 0 var(--space-md);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.8rem;
+    background: rgba(30, 32, 35, 0.92);
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+  .chip-clock {
+    color: var(--color-muted);
+    border-color: var(--color-zinc);
+  }
+  .chip .k {
+    color: var(--color-muted);
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    background: var(--color-zinc);
+  }
+  .dot[data-buka='true'] {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+    animation: kedip 1.6s ease-in-out infinite;
+  }
+  .dot[data-buka='false'] {
+    background: var(--color-accent);
+  }
+  @keyframes kedip {
+    50% {
+      opacity: 0.35;
+    }
+  }
+  h1 {
+    font-size: var(--h1);
+    line-height: 0.98;
+    margin: 0 0 var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+  h1 .accent {
+    color: var(--color-accent);
+  }
+  .sub {
+    max-width: 34rem;
+    color: var(--color-muted);
+    font-size: 1.1rem;
+    margin: 0 0 var(--space-lg);
+  }
+  .sub strong {
+    color: var(--color-text);
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+  .specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md) var(--space-lg);
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xl) 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .specs span {
+    color: var(--color-accent);
+  }
+</style>
+
+<script>
+  import { JAM, teksChip, jamLokal } from '../data/hours';
+
+  const clock = document.querySelector('.hero [data-clock]');
+  const servisDot = document.querySelector('.hero [data-dot="servis"]');
+  const servisTeks = document.querySelector('.hero [data-teks="servis"]');
+  const cuciDot = document.querySelector('.hero [data-dot="cuci"]');
+  const cuciTeks = document.querySelector('.hero [data-teks="cuci"]');
+
+  function perbarui() {
+    const now = new Date();
+    if (clock) clock.textContent = jamLokal(now);
+    const s = teksChip(JAM.servis, now);
+    const c = teksChip(JAM.cuci, now);
+    servisDot?.setAttribute('data-buka', String(s.buka));
+    if (servisTeks) servisTeks.textContent = s.teks;
+    cuciDot?.setAttribute('data-buka', String(c.buka));
+    if (cuciTeks) cuciTeks.textContent = c.teks;
+  }
+
+  perbarui();
+  setInterval(perbarui, 1000); // jam berjalan terasa hidup, status ikut termutakhirkan
+</script>
