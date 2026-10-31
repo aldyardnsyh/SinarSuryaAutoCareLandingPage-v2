@@ -1,0 +1,360 @@
+---
+// Testimoni — carousel ulasan Google yang real (lihat src/data/testimoni.ts).
+// Desktop menampilkan 2 kartu sekaligus, mobile 1 kartu. Auto-geser tiap 6 detik,
+// ada bintang, avatar inisial, badge Google, tombol prev/next, pause saat hover,
+// hormati prefers-reduced-motion.
+import { TESTIMONI, SHOW_TESTIMONI } from '../data/testimoni';
+import { SITE } from '../data/site';
+
+const initial = (nama: string) => (nama ? nama.trim().charAt(0).toUpperCase() : 'G');
+---
+
+{
+  SHOW_TESTIMONI && (
+    <section class="testimoni container" aria-label="Ulasan pelanggan">
+      <div class="head">
+        <div>
+          <p class="eyebrow">03 - Kata Pelanggan</p>
+          <h2>Ulasan di Google</h2>
+        </div>
+        <div class="rating">
+          <span class="score">{SITE.rating.score}</span>
+          <span class="meta">dari 5 &middot; {SITE.rating.total} ulasan</span>
+        </div>
+      </div>
+
+      <div class="slider" id="testi-slider">
+        <div class="viewport">
+          <div class="track" data-track>
+            {TESTIMONI.map((t) => (
+              <figure class="card">
+                <span class="stars" aria-label="5 dari 5 bintang" role="img">
+                  {'★★★★★'}
+                </span>
+                <blockquote>"{t.quote}"</blockquote>
+                <figcaption>
+                  <span class="avatar" aria-hidden="true">{initial(t.nama)}</span>
+                  <span class="who">
+                    <strong>{t.nama ? t.nama : 'Ulasan Google'}</strong>
+                    <span>{t.info}</span>
+                  </span>
+                  <span class="gbadge" aria-hidden="true">G</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        <div class="controls">
+          <button type="button" data-prev aria-label="Ulasan sebelumnya">&lsaquo;</button>
+          <div class="dots" data-dots></div>
+          <button type="button" data-next aria-label="Ulasan berikutnya">&rsaquo;</button>
+        </div>
+      </div>
+
+      <div class="ulas-cta">
+        <div>
+          <strong>Pernah servis atau cuci di sini?</strong>
+          <span>Ulasan Anda sangat membantu bengkel kami terus tumbuh dan membantu pemilik mobil lain.</span>
+        </div>
+        <a class="btn btn-primary" href={SITE.mapsShortLink} target="_blank" rel="noopener noreferrer">
+          Tulis Ulasan di Google <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <a class="all-link" href={SITE.mapsShortLink} target="_blank" rel="noopener noreferrer">
+        Lihat semua {SITE.rating.total} ulasan di Google Maps <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  )
+}
+
+<style>
+  .testimoni {
+    padding-block: var(--space-xl);
+  }
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  h2 {
+    font-size: var(--h2);
+    margin: var(--space-xs) 0 0;
+  }
+  .rating {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.7rem 1.1rem;
+    background: var(--color-panel);
+    border: 1px solid var(--color-zinc);
+    border-top: 4px solid var(--color-accent);
+    border-radius: var(--radius);
+  }
+  .score {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .viewport {
+    overflow: hidden;
+  }
+  .track {
+    display: flex;
+    gap: var(--space-md);
+    transition: transform 0.5s ease;
+  }
+  .card {
+    flex: 0 0 calc(50% - var(--space-md) / 2);
+    margin: 0;
+    padding: var(--space-lg);
+    background: var(--color-panel);
+    border: 1px solid var(--color-zinc);
+    border-top: 4px solid var(--color-accent);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .stars {
+    color: var(--color-accent);
+    font-size: 1.05rem;
+    letter-spacing: 0.2em;
+  }
+  blockquote {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+  figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-zinc);
+  }
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-shrink: 0;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    border-radius: var(--radius);
+  }
+  .who {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+    flex: 1;
+  }
+  .who strong {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .who span {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+  }
+  .gbadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    flex-shrink: 0;
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-accent);
+    background: var(--color-base);
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+  .controls button {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: var(--color-panel);
+    color: var(--color-text);
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .controls button:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  .dots {
+    display: flex;
+    gap: 0.45rem;
+  }
+  .dots button {
+    width: 0.7rem;
+    height: 0.7rem;
+    padding: 0;
+    background: var(--color-zinc);
+    border: none;
+    cursor: pointer;
+  }
+  .dots button[aria-current='true'] {
+    background: var(--color-accent);
+  }
+
+  .all-link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .all-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .ulas-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    background: var(--color-panel);
+    border: 1px solid var(--color-zinc);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius);
+  }
+  .ulas-cta strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.15rem;
+  }
+  .ulas-cta span {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 720px) {
+    .card {
+      flex: 0 0 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .track {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Carousel: auto-geser 1 kartu tiap 6 detik, pause saat hover, tombol + dots.
+  // Lebar geser mengikuti jumlah kartu yang terlihat (2 di desktop, 1 di mobile).
+  const root = document.getElementById('testi-slider');
+  if (root) {
+    const track = root.querySelector('[data-track]');
+    const dotsWrap = root.querySelector('[data-dots]');
+    const cards = Array.from(track?.children ?? []);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let index = 0;
+    let timer: ReturnType<typeof setInterval> | undefined;
+
+    const visibleCount = () => {
+      const first = cards[0] as HTMLElement | undefined;
+      if (!first || !track) return 1;
+      const gap = parseFloat(getComputedStyle(track).columnGap || '0') || 0;
+      return Math.max(1, Math.round(track.clientWidth / (first.offsetWidth + gap)));
+    };
+
+    const dots: HTMLButtonElement[] = [];
+    const rebuildDots = () => {
+      const visible = visibleCount();
+      const pages = Math.max(1, cards.length - visible + 1);
+      if (dotsWrap) {
+        dotsWrap.innerHTML = '';
+        dots.length = 0;
+        for (let i = 0; i < pages; i++) {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.setAttribute('aria-label', `Tampilkan ulasan ${i + 1}`);
+          dot.addEventListener('click', () => go(i, true));
+          dotsWrap.appendChild(dot);
+          dots.push(dot);
+        }
+      }
+      return pages;
+    };
+
+    let pages = rebuildDots();
+    const paint = () => {
+      if (track) {
+        const first = cards[0] as HTMLElement | undefined;
+        if (first) {
+          const gap = parseFloat(getComputedStyle(track).columnGap || '0') || 0;
+          track.style.transform = `translateX(-${index * (first.offsetWidth + gap)}px)`;
+        }
+      }
+      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
+    };
+    const go = (i: number, manual: boolean = false) => {
+      index = Math.min(Math.max(i, 0), pages - 1);
+      if (index >= pages - 1 && pages > 1) index = pages - 1;
+      paint();
+      if (manual) restart();
+    };
+    const next = () => go(index + 1 >= pages ? 0 : index + 1);
+    const restart = () => {
+      if (reduceMotion) return;
+      clearInterval(timer);
+      timer = setInterval(next, 2500);
+    };
+
+    root.querySelector('[data-prev]')?.addEventListener('click', () => go(index - 1, true));
+    root.querySelector('[data-next]')?.addEventListener('click', () => go(index + 1, true));
+    root.addEventListener('mouseenter', () => clearInterval(timer));
+    root.addEventListener('mouseleave', restart);
+    window.addEventListener('resize', () => {
+      pages = rebuildDots();
+      index = Math.min(index, pages - 1);
+      paint();
+    });
+    restart();
+    paint();
+  }
+</script>
