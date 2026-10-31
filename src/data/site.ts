@@ -10,9 +10,10 @@ export const SITE = {
   tagline: 'Bengkel Mobil & Cuci Hidrolik',
   phone: '022-7502999',
   phoneIntl: '+62227502999',
-  // Nomor WhatsApp resmi bengkel = nomor kantor 022-7502999 (format internasional tanpa "+")
-  whatsapp: '62227502999',
-  whatsappDisplay: '022-7502999',
+  // Nomor WhatsApp AKTIF dari client (konfirmasi 31 Okt 2026) — dipakai semua tombol chat
+  whatsapp: '628122022203',
+  whatsappDisplay: '0812-2022-203',
+  mobileIntl: '+628122022203',
 
   address: {
     full: 'Jl. Cijagra No.8, Bojongsoang, Kec. Bojongsoang, Kabupaten Bandung, Jawa Barat 40288',

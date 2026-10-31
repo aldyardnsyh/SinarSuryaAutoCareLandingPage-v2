@@ -14,8 +14,8 @@ export interface Props {
 }
 
 const {
-  title = 'Bengkel Mobil & Cuci Hidrolik Bojongsoang - Sinar Surya Auto Care',
-  description = 'Sinar Surya Auto Care, bengkel mobil dan cuci hidrolik di Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung. Servis rutin, ganti oli, AC, kaki-kaki, sampai steam wash. Buka setiap hari 07.00 sampai 17.00.',
+  title = 'Bengkel Mobil & Cuci Hidrolik Bojongsoang Bandung - Sinar Surya Auto Care',
+  description = 'Sinar Surya Auto Care, bengkel mobil & cuci hidrolik di Jl. Cijagra No.8, Bojongsoang, Bandung. Servis rutin, ganti oli, AC, kaki-kaki, cuci kolong hidrolik & steam wash. Mudah dijangkau dari Dayeuhkolot, Baleendah, Buahbatu. Chat WhatsApp untuk harga.',
 } = Astro.props;
 
 const canonical = new URL('/', SITE_URL).href;
@@ -33,7 +33,9 @@ const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#141414" />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="id" href={canonical} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Sinyal lokasi untuk mesin pencari -->
@@ -66,9 +68,13 @@ const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
       '@type': 'AutoRepair',
       '@id': `${SITE_URL}/#business`,
       name: SITE.name,
-      description: 'Bengkel mobil dan cuci hidrolik di Bojongsoang, Kabupaten Bandung. Servis rutin, ganti oli, service AC, kaki-kaki, kelistrikan, cuci mobil hidrolik, steam wash, vacuum dan detailing.',
+      alternateName: 'SSAC',
+      description: 'Bengkel mobil dan cuci hidrolik di Bojongsoang, Kabupaten Bandung. Servis rutin, ganti oli, service AC, kaki-kaki, kelistrikan, cuci mobil hidrolik (kolong), steam wash, vacuum dan detailing.',
       url: SITE_URL,
       telephone: SITE.phoneIntl,
+      priceRange: 'IDR',
+      paymentAccepted: 'Tunai, QRIS',
+      areaServed: ['Bojongsoang', 'Dayeuhkolot', 'Baleendah', 'Buahbatu', 'Kabupaten Bandung'],
       address: {
         '@type': 'PostalAddress',
         streetAddress: SITE.address.street,
@@ -97,7 +103,7 @@ const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
           closes: '16:00',
         },
       ],
-      image: ogImage,
+      image: [ogImage, new URL('/images/hero-bengkel-cuci-hidrolik-bojongsoang.webp', SITE_URL).href],
       hasMap: SITE.mapsShortLink,
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
