@@ -1,0 +1,166 @@
+---
+// /cuci-mobil-hidrolik — halaman andalan situs layanan.
+// Primary keyword: "cuci mobil hidrolik bandung". Konten asli,
+// foto asli bengkel, schema Service + BreadcrumbList.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerLayout from '../layouts/InnerLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { serviceSchema, breadcrumbSchema } from '../data/seo';
+import { waLink } from '../data/site';
+import '../styles/service-page.css';
+
+const path = '/cuci-mobil-hidrolik';
+const title = 'Cuci Mobil Hidrolik Bandung | Cuci Kolong Sasis - Sinar Surya Auto Care';
+const description = 'Cuci mobil hidrolik di Bojongsoang, Bandung: mobil diangkat lift hidrolik sehingga kolong dan sasis ikut bersih. Cocok untuk MPV, SUV, dan mobil harian. Estimasi biaya via WhatsApp.';
+
+const waMessage = 'Halo, mau tanya cuci hidrolik';
+const service = serviceSchema({
+  path,
+  name: 'Cuci Mobil Hidrolik',
+  serviceType: 'Cuci mobil hidrolik (cuci kolong)',
+  description,
+  images: [
+    '/images/hero-bengkel-cuci-hidrolik-bojongsoang.webp',
+    '/images/galeri-lift-hidrolik.webp',
+  ],
+});
+const crumbs = breadcrumbSchema([{ name: 'Cuci Mobil Hidrolik', path }]);
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <span class="here">Cuci Mobil Hidrolik</span>
+        </nav>
+        <p class="eyebrow">Spesialis Kami</p>
+        <h1>Cuci Mobil Hidrolik: Kolong Sampai Sasis Dibersihkan Betul</h1>
+        <p class="lead">
+          Cuci mobil biasa berhenti di bagian yang kelihatan. Cuci hidrolik lanjut ke bagian
+          yang paling jarang disentuh siapa pun: kolong, sasis, dan kaki-kaki. Di bengkel kami
+          mobil diangkat dengan lift hidrolik, jadi tidak ada bagian bawah yang lolos.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={waLink(waMessage)} target="_blank" rel="noopener noreferrer">Tanya Cuci Hidrolik via WhatsApp</a>
+          <a class="btn btn-secondary" href="#proses">Lihat Prosesnya</a>
+        </div>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/hero-bengkel-cuci-hidrolik-bojongsoang.webp"
+          alt="Mobil diangkat lift hidrolik saat cuci kolong di Sinar Surya Auto Care, Bojongsoang, Bandung"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Proses cuci hidrolik di area cuci kami: mobil terangkat penuh di atas lift.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section id="pengertian">
+          <h2>Apa Itu Cuci Mobil Hidrolik?</h2>
+          <p>
+            Cuci mobil hidrolik adalah metode pencucian di mana mobil diangkat utuh menggunakan
+            lift hidrolik sebelum disemprot. Dengan mobil terangkat, kru kami bisa menyemprot
+            bagian bawah kendaraan yang pada cuci biasa mustahil terjangkau: kolong sasis,
+            crossmember, baja bawah pintu, sampai sela-sela kaki-kaki. Lumpur mengering, debu
+            jalanan, dan sisa tanah dari jalan rusak semuanya terangkat, bukan cuma tersembunyi
+            di balik bodi.
+          </p>
+          <p>
+            Bagian bawah mobil adalah wilayah yang paling rentan kena karat. Kotoran yang
+            menempel lama menahan lembap di permukaan baja, dan lembap itulah yang lama-kelamaan
+            jadi karat. Membersihkannya secara berkala bukan gaya-gayaan, melainkan perawatan
+            yang menahan usia bodi mobil Anda.
+          </p>
+        </section>
+
+        <section>
+          <h2>Cocok untuk Mobil Seperti Apa?</h2>
+          <p>Semua mobil boleh ikut cuci hidrolik, tapi ada beberapa tipe pemilik yang paling merasakan manfaatnya:</p>
+          <ul>
+            <li><strong>MPV keluarga harian</strong> yang tiap hari menumpuk anak sekolah dan sering lewat jalan berdebu di area Bandung Raya.</li>
+            <li><strong>SUV dan mobil tinggi</strong> yang kolongnya luas dan menjadi rumah favorit lumpur kering.</li>
+            <li><strong>Mobil yang baru melewati banjir atau jalan lumpur</strong>, supaya tanah yang membekas di bawah bodi tidak mengering dan mengeras.</li>
+            <li><strong>Mobil yang jarang dicuci kolong sejak baru</strong>, terutama mobil bekas yang riwayat perawatannya belum jelas.</li>
+            <li><strong>Mobil yang mau dijual</strong>. Kolong bersih membuat pembeli yang mengecek bawah mobil melihat unit terawat, bukan yang menutupi masalah.</li>
+          </ul>
+        </section>
+
+        <section id="proses">
+          <h2>Proses Pengerjaan Langkah demi Langkah</h2>
+          <ol class="steps">
+            <li>
+              <p><strong>Booking dan konfirmasi slot</strong></p>
+              <p>Anda chat WhatsApp kami, sebut merek mobil dan kira-kira seberapa kotor kolongnya. Admin memberi estimasi dan slot pengerjaan.</p>
+            </li>
+            <li>
+              <p><strong>Bayar dan antre di pos awal</strong></p>
+              <p>Mobil masuk antrian cuci. Di hari ramai seperti Sabtu, datang pagi lebih aman.</p>
+            </li>
+            <li>
+              <p><strong>Bilas awal dan busa menyeluruh</strong></p>
+              <p>Bodi dibasahi lalu diberi busa sabun untuk melonggarkan kotoran permukaan sebelum digosok.</p>
+            </li>
+            <li>
+              <p><strong>Mobil diangkat lift hidrolik</strong></p>
+              <p>Inilah pembeda utama. Mobil naik penuh, dan seluruh kolong jadi terlihat dan terjangkau semprotan.</p>
+            </li>
+            <li>
+              <p><strong>Semprot kolong dan sasis</strong></p>
+              <p>Kru menyemprot bagian bawah sampai lumpur dan kotoran lepas, termasuk sela kaki-kaki dan tepi baja bodi.</p>
+            </li>
+            <li>
+              <p><strong>Steam wash lanjutan sesuai paket</strong></p>
+              <p>Kalau Anda ambil paket steam, interior dan celah bodi dikerjakan dengan uap panas sehingga higienis dan cepat kering.</p>
+            </li>
+            <li>
+              <p><strong>Pemeriksaan akhir dan serah terima</strong></p>
+              <p>Mobil diturunkan, hasil dicek bersama, lalu Anda bayar tunai atau QRIS.</p>
+            </li>
+          </ol>
+          <div class="note">
+            <p>
+              Pengerjaan cuci hidrolik buka Senin sampai Sabtu mulai pukul 07.00 dan Minggu mulai
+              pukul 08.00, sedangkan bayar bisa tunai atau QRIS di tempat.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Beda Cuci Hidrolik dan Cuci Mobil Biasa</h2>
+          <p>
+            Cuci biasa membersihkan eksterior yang terlihat: bodi, kaca, dan velg. Cukup untuk
+            tampilan, tapi tidak menyentuh bagian bawah sama sekali. Cuci hidrolik menambahkan
+            satu tahap yang menentukan: mobil diangkat, sehingga kolong, sasis, dan sela
+            kaki-kaki ikut tersiram dan terbilas. Hasilnya bukan cuma mobil yang kinclong dari
+            luar, tapi unit yang bagian bawahnya benar-benar bersih dan lembapnya terkawal.
+          </p>
+          <p>
+            Kalau mobil Anda tinggal di garasi dan jarang keluar, cuci biasa mungkin cukup.
+            Tapi kalau mobil dipakai harian lewat jalan Bandung yang berkubang atau baru pulang
+            mudik lewat jalanan rusak, cuci kolong hidrolik justru tahap yang paling penting.
+          </p>
+        </section>
+
+        <section>
+          <h2>Kapan Sebaiknya Cuci Hidrolik?</h2>
+          <ul>
+            <li>Setelah melewati banjir, genangan, atau jalan tanah yang baru dikeruk.</li>
+            <li>Sekitar satu sampai dua bulan sekali untuk mobil harian, atau lebih sering saat musim hujan.</li>
+            <li>Saat mulai ada bau lembap di kabin yang muncul dari bagian bawah yang kotor.</li>
+            <li>Sebelum servis berkala atau saat akan menjual mobil, supaya mekanik dan pembeli melihat kondisi asli kendaraan.</li>
+          </ul>
+          <p>
+            Tidak ada aturan baku yang berlaku untuk semua mobil. Yang jelas, makin sering kolong
+            kena air dan sabun, makin kecil peluang karat mulai makan baja bawah kendaraan Anda.
+          </p>
+        </section>
+      </div>
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
