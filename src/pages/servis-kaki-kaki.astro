@@ -1,0 +1,132 @@
+---
+// /servis-kaki-kaki — suspensi, rem, wheel alignment.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerLayout from '../layouts/InnerLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { serviceSchema, breadcrumbSchema } from '../data/seo';
+import { waLink } from '../data/site';
+import '../styles/service-page.css';
+
+const path = '/servis-kaki-kaki';
+const title = 'Servis Kaki-kaki Mobil Bandung | Rem & Suspensi - Sinar Surya Auto Care';
+const description = 'Servis kaki-kaki mobil di Bojongsoang, Bandung: bunyi saat melewati jalan rusak, shockbreaker, bushing, rem, sampai wheel alignment. Diagnosis dulu, baru diganti.';
+
+const waMessage = 'Halo, mau tanya servis kaki-kaki mobil';
+const service = serviceSchema({
+  path,
+  name: 'Servis Kaki-kaki & Rem',
+  serviceType: 'Perbaikan kaki-kaki, suspensi, rem, wheel alignment',
+  description,
+  images: ['/images/galeri-area-servis.webp'],
+});
+const crumbs = breadcrumbSchema([{ name: 'Servis Kaki-kaki', path }]);
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <span class="here">Servis Kaki-kaki</span>
+        </nav>
+        <p class="eyebrow">Layanan Servis</p>
+        <h1>Servis Kaki-kaki Mobil: Bunyi, Goyang, dan Pulling Kami Bereskan</h1>
+        <p class="lead">
+          Jalan Bandung tidak semuanya mulus, dan kaki-kaki mobil yang paling banyak menanggung
+          bebannya. Bunyi klotok, mobil goyang di kecepatan, atau nyeret ke satu sisi itu
+          tanda ada komponen yang minta diperiksa.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={waLink(waMessage)} target="_blank" rel="noopener noreferrer">Tanya Servis Kaki-kaki via WhatsApp</a>
+          <a class="btn btn-secondary" href="#gejala">Kenali Gejalanya</a>
+        </div>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/galeri-area-servis.webp"
+          alt="Mekanik mengerjakan mobil di atas lift di area servis kaki-kaki Sinar Surya Auto Care Bojongsoang, Bandung"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Mobil terangkat di lift saat pemeriksaan bagian bawah dan kaki-kaki.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section id="gejala">
+          <h2>Gejala Kaki-kaki yang Jangan Ditunda</h2>
+          <ul>
+            <li><strong>Bunyi klotok atau kresek</strong> saat melewati polisi tidur, speed bump, atau jalan rusak. Biasanya dari bushing atau ball joint yang sudah longgar.</li>
+            <li><strong>Setir goyang</strong> pada kecepatan tertentu, sering karena sudah tidak seimbang atau velg yang bermasalah.</li>
+            <li><strong>Mobil menyeret ke satu sisi</strong> walau setir dijaga lurus, tanda klasik perlu wheel alignment.</li>
+            <li><strong>Ban aus tidak rata</strong>: habis di satu tepi saja, bukti sudut kemudi atau suspensi tidak benar.</li>
+            <li><strong>Pedal rem terasa dalam atau bunyi decit</strong>, kamvas atau sistem rem butuh perhatian sekarang, bukan nanti.</li>
+          </ul>
+          <p>
+            Kaki-kaki adalah sistem yang menentukan mobil tetap di jalur saat pengereman darurat.
+            Gejalanya jarang membaik sendiri. Yang ada, makin lama dibiarkan makin banyak part
+            ikut rusak karena saling menyerap getaran yang tidak seharusnya.
+          </p>
+        </section>
+
+        <section>
+          <h2>Cakupan Layanan Kaki-kaki</h2>
+          <ul>
+            <li><strong>Pemeriksaan suspensi</strong>: shockbreaker, per, dan dudukan yang sudah lemah atau bocor.</li>
+            <li><strong>Bushing dan ball joint</strong> yang longgar diganti sebelum merusak part lain di sekitarnya.</li>
+            <li><strong>Sistem rem</strong>: kamvas, cakram, dan cairan rem dicek serta diganti sesuai kondisi.</li>
+            <li><strong>Wheel alignment dan balancing</strong> supaya setir lurus, ban aus rata, dan mobil tidak makan bahan bakar berlebih.</li>
+            <li><strong>Rak kemudi</strong> diperiksa kalau ada bunyi atau main setir yang terasa longgar.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Alur Pengerjaan</h2>
+          <ol class="steps">
+            <li>
+              <p><strong>Jelaskan bunyi atau gejalanya</strong></p>
+              <p>Chat WhatsApp kami: sebut tipe mobil, kecepatan saat gejala muncul, dan jalur mana yang paling memunculkan bunyi.</p>
+            </li>
+            <li>
+              <p><strong>Tes jalan dan pemeriksaan di atas lift</strong></p>
+              <p>Mekanik mencoba mobil lalu mengangkatnya untuk memeriksa tiap titik kaki-kaki secara langsung.</p>
+            </li>
+            <li>
+              <p><strong>Diagnosis dengan bukti</strong></p>
+              <p>Part yang rusak ditunjukkan ke Anda, lengkap dengan penjelasan kenapa harus diganti.</p>
+            </li>
+            <li>
+              <p><strong>Pengerjaan dan penggantian</strong></p>
+              <p>Pekerjaan jalan sesuai kesepakatan, tidak ada part masuk tanpa alasan jelas.</p>
+            </li>
+            <li>
+              <p><strong>Alignment dan uji akhir</strong></p>
+              <p>Setelah perbaikan, sudut kemudi disetel ulang dan hasil dites bersama sebelum mobil kembali ke Anda.</p>
+            </li>
+          </ol>
+          <div class="note">
+            <p>
+              Jam servis mobil Senin sampai Sabtu pukul 08.00 sampai 17.00. Kirim tipe mobil
+              dan gejalanya via WhatsApp untuk estimasi pengerjaan, dan slot same-day
+              tersedia selama antrean masih ada.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Alignment Saja Tidak Selalu Cukup</h2>
+          <p>
+            Wheel alignment sering dianggap obat semua masalah setir. Kenyataannya, alignment
+            hanya bermanfaat kalau komponen kaki-kaki masih sehat. Menyetel sudut kemudi di
+            atas bushing yang longgar itu sama seperti mengukur di atas meja yang goyang.
+            Karena itu kami selalu periksa komponen dulu, baru alignment dieksekusi, agar
+            hasilnya bertahan dan uang Anda tidak habis untuk pekerjaan yang harus diulang.
+          </p>
+        </section>
+      </div>
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
