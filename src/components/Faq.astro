@@ -1,24 +1,23 @@
 ---
 // FAQ — tanya jawab yang paling sering dicari orang lokal + FAQPage JSON-LD.
-// Semua jawaban berdasarkan data real (jam operasional, QRIS dari ulasan Google).
-import { JAM } from '../data/hours';
-
+// Realokasi FAQ (brief maintenance): fokus layanan, biaya, dan teknis.
+// Pertanyaan profil/lokasi ditangani domain lain dalam keluarga situs.
 const faq = [
   {
-    q: 'Di mana lokasi Sinar Surya Auto Care?',
-    a: `Kami di ${'Jl. Cijagra No.8, Bojongsoang, Kec. Bojongsoang, Kabupaten Bandung'} — mudah dijangkau dari Bojongsoang, Dayeuhkolot, Baleendah, dan Buahbatu. Cari "Sinar Surya Auto Care" di Google Maps.`,
+    q: 'Berapa kisaran biaya cuci kolong hidrolik?',
+    a: 'Biayanya mengikuti ukuran mobil dan seberapa berat kotoran di bagian bawah. MPV atau SUV yang kolongnya penuh lumpur membutuhkan pengerjaan lebih lama daripada sedan harian yang dirawat rutin. Untuk angka yang akurat, chat WhatsApp kami dengan menyebut merek dan tipe mobil, admin langsung memberi estimasi sebelum Anda datang.',
   },
   {
-    q: 'Servis mobil hari Minggu buka tidak?',
-    a: `Servis mobil hanya Senin-Sabtu ${JAM.servis.seninSabtu.open}-${JAM.servis.seninSabtu.close}. Hari Minggu servis tutup, tetapi cuci hidrolik tetap buka pukul ${JAM.cuci.minggu?.open} sampai ${JAM.cuci.minggu?.close}.`,
+    q: 'Apakah bisa servis AC mobil di tempat?',
+    a: 'Bisa. Kami menangani cuci AC evaporator, pengecekan kebocoran, pengisian freon, sampai penggantian komponen yang rusak seperti kipas atau kondensor. Cuci AC dan isi freon biasanya selesai di hari yang sama. Gejala seperti AC kurang dingin atau bau saat dinyalakan sebaiknya dicek sebelum komponen lebih besar ikut rusak.',
   },
   {
-    q: 'Cuci hidrolik itu apa bedanya dengan cuci mobil biasa?',
-    a: 'Mobil diangkat dengan lift hidrolik sehingga bagian bawah (kolong sasis) ikut tercuci bersih. Cuci biasa hanya membersihkan bagian luar yang terlihat.',
+    q: 'Berapa lama pengerjaan tune up?',
+    a: 'Sebagian besar tune up selesai dalam hitungan jam di hari yang sama, tergantung kondisi mesin dan antrean hari itu. Pengerjaan mencakup pemeriksaan busi, filter, throttle, dan penyetelan sesuai tipe mobil. Kalau saat pemeriksaan ditemukan part yang wajib diganti, mekanik kami jelaskan dulu sebelum lanjut, jadi tidak ada biaya di luar kesepakatan.',
   },
   {
-    q: 'Bagaimana cara booking servis atau cuci mobil?',
-    a: 'Cukup chat WhatsApp kami. Kirim keluhan atau foto mobil, kami cek dan jelaskan estimasinya, lalu Anda datang sesuai jadwal yang disepakati.',
+    q: 'Bisa booking same-day via WhatsApp?',
+    a: 'Bisa, selama slot pengerjaan hari itu masih tersedia. Kirim merek mobil dan keluhannya ke WhatsApp kami, admin cek slot lalu konfirmasi jam berapa Anda bisa datang. Untuk cuci hidrolik di akhir pekan sebaiknya chat lebih awal karena antrean cuci biasanya lebih ramai.',
   },
   {
     q: 'Bisa bayar pakai QRIS?',
