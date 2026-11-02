@@ -1,0 +1,120 @@
+---
+// /lokasi — halaman lokasi + arah dari Buahbatu, Baleendah, Dayeuhkolot.
+// Schema ContactPage + BreadcrumbList. Embed Maps lazy, parkir dijelaskan.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerLayout from '../layouts/InnerLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { breadcrumbSchema } from '../data/seo';
+import { SITE, SITE_URL, MAPS_EMBED_URL, telLink, waLink } from '../data/site';
+import { JAM } from '../data/hours';
+import '../styles/service-page.css';
+
+const path = '/lokasi';
+const title = 'Lokasi Bengkel & Arah Perjalanan - Sinar Surya Auto Care';
+const description = 'Alamat Sinar Surya Auto Care: Jl. Cijagra No.8, Bojongsoang, Kab. Bandung. Arah perjalanan dari Buahbatu, Baleendah, dan Dayeuhkolot, jam buka, dan info parkir.';
+
+const waMessage = 'Halo, mau konfirmasi lokasi dan jam buka bengkel';
+const crumbs = breadcrumbSchema([{ name: 'Lokasi', path }]);
+
+// Schema ContactPage dengan data kontak lengkap bengkel.
+const contact = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Lokasi & Kontak Sinar Surya Auto Care',
+  description,
+  url: `${SITE_URL}${path}`,
+  mainEntity: {
+    '@id': `${SITE_URL}/#business`,
+  },
+};
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <span class="here">Lokasi</span>
+        </nav>
+        <p class="eyebrow">Kontak &amp; Lokasi</p>
+        <h1>Lokasi Bengkel: Jl. Cijagra No.8, Bojongsoang</h1>
+        <p class="lead">
+          Bengkel kami di tepi Jl. Cijagra, Bojongsoang, Kabupaten Bandung. Satu alamat untuk
+          servis dan cuci hidrolik, mudah dijangkau dari sisi Buahbatu maupun arah
+          Dayeuhkolot dan Baleendah.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={SITE.mapsShortLink} target="_blank" rel="noopener noreferrer">Buka di Google Maps <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href={waLink(waMessage)} target="_blank" rel="noopener noreferrer">Konfirmasi via WhatsApp</a>
+        </div>
+      </header>
+
+      <div class="prose container">
+        <section>
+          <h2>Alamat Lengkap dan Titik Pin</h2>
+          <p>
+            <strong>{SITE.address.full}</strong> Plus Code {SITE.address.plusCode}.
+            Cari "Sinar Surya Auto Care" di Google Maps dan pin akan mengantarkan Anda tepat
+            ke gerbang bengkel. Kalau tiba di sekitar lokasi dan ragu, chat WhatsApp kami
+            langsung diarahkan.
+          </p>
+          <ul>
+            <li>Telepon/WA: {SITE.phone}</li>
+            <li>Jam servis mobil: {JAM.servis.label}</li>
+            <li>Jam cuci hidrolik: {JAM.cuci.label}</li>
+            <li>Pembayaran di tempat: tunai atau QRIS</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Arah Perjalanan dari Sekitar Bandung</h2>
+          <p>
+            <strong>Dari Buahbatu:</strong> masuk ke arah Bojongsoang lewat jalur yang
+            menghubungkan koridor Buahbatu dengan Jl. Cijagra. Perjalanan biasanya pendek
+            karena bengkel ada di sisi kota yang berhadapan langsung dengan Buahbatu.
+          </p>
+          <p>
+            <strong>Dari Baleendah:</strong> susuri jalur tepi Sungai Citarum ke arah
+            Dayeuhkolot, lalu naik ke Bojongsoang. Rutenya lurus dan tidak perlu masuk pusat
+            kota Bandung, jadi cukup ramah meskipun jam padat.
+          </p>
+          <p>
+            <strong>Dari Dayeuhkolot:</strong> paling dekat di antara semua. Ikuti jalan
+            utama ke arah Bojongsoang dan Anda akan menemui Jl. Cijagra dalam beberapa
+            menit saja.
+          </p>
+          <p>
+            Navigasi bisa berubah mengikuti kondisi jalan dan pembangunan, jadi kalau
+            ragu antara dua rute, tanya lewat WhatsApp dan kami arahkan lewat jalur yang
+            sedang paling lancar hari itu.
+          </p>
+        </section>
+
+        <section>
+          <h2>Parkir dan Pertama Kali Datang</h2>
+          <p>
+            Mobil yang datang untuk cuci atau servis langsung masuk ke area bengkel, jadi
+            tidak ada masalah cari tempat parkir di jalan. Tanyakan slot lewat WhatsApp
+            sebelum berangkat, terutama Sabtu pagi ketika antrean cuci paling ramai.
+            Saat pengerjaan berjalan, Anda bisa menunggu di area bengkel sambil lihat
+            mobil dikerjakan.
+          </p>
+        </section>
+      </div>
+
+      <div class="page-photo container">
+        <iframe
+          src={MAPS_EMBED_URL}
+          title="Peta lokasi Sinar Surya Auto Care, Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(contact)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
