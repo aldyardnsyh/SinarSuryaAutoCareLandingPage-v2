@@ -45,7 +45,10 @@ export const SITE = {
   },
 } as const;
 
-export const SITE_URL = 'https://bengkelmobilbandung.biz.id'; // domain resmi, deploy di Vercel
+// Domain resmi, deploy di Vercel. Situs dilayani di www (non-www redirect
+// 308 ke www), jadi SEMUA URL internal (canonical, og, schema, sitemap,
+// robots.txt) wajib memakai www agar konsisten.
+export const SITE_URL = 'https://www.bengkelmobilbandung.biz.id';
 
 // Embed peta listing resmi bengkel (query nama + alamat supaya pin
 // "Sinar Surya Auto Care" tampil tepat di tengah bingkai).
