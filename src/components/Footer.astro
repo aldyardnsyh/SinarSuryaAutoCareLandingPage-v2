@@ -1,5 +1,6 @@
 ---
 // Footer — hitam, border atas hazard-stripe
+// Anchor menuju section homepage: dari halaman sub-path dipakai "/#anchor".
 import Logo from './Logo.astro';
 import { SITE, telLink } from '../data/site';
 import { JAM } from '../data/hours';
@@ -7,12 +8,29 @@ import { JAM } from '../data/hours';
 // Tahun berjalan saat build; ikut ter-update setiap kali situs di-rebuild/deploy.
 const tahun = new Date().getFullYear();
 
+const base = Astro.url.pathname === '/' ? '' : '/';
 const menu = [
-  { href: '#beranda', label: 'Beranda' },
-  { href: '#tentang', label: 'Tentang' },
-  { href: '#layanan', label: 'Layanan' },
-  { href: '#galeri', label: 'Galeri' },
-  { href: '#kontak', label: 'Kontak' },
+  { href: `${base}#beranda`, label: 'Beranda' },
+  { href: `${base}#tentang`, label: 'Tentang' },
+  { href: `${base}#layanan`, label: 'Layanan' },
+  { href: `${base}#galeri`, label: 'Galeri' },
+  { href: `${base}#kontak`, label: 'Kontak' },
+];
+
+// Halaman layanan (sitemap internal situs ini)
+const menuLayanan = [
+  { href: '/cuci-mobil-hidrolik', label: 'Cuci Mobil Hidrolik' },
+  { href: '/steam-wash', label: 'Steam Wash' },
+  { href: '/servis-rutin', label: 'Servis Rutin' },
+  { href: '/servis-ac-mobil', label: 'Service AC Mobil' },
+  { href: '/servis-kaki-kaki', label: 'Servis Kaki-kaki' },
+  { href: '/lokasi', label: 'Lokasi & Arah' },
+];
+
+// Cross-link ke dua domain keluarga (satu usaha yang sama, beda fokus).
+const kunjungiJuga = [
+  { href: 'https://www.sinarsuryaautocare.biz.id', label: 'Profil resmi Sinar Surya Auto Care' },
+  { href: 'https://www.bengkelmobilbojongsoang.web.id', label: 'Bengkel keluarga di Bojongsoang' },
 ];
 ---
 
@@ -36,6 +54,16 @@ const menu = [
       <ul>
         {
           menu.map((m) => (
+            <li>
+              <a href={m.href}>{m.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <h3>Halaman Layanan</h3>
+      <ul>
+        {
+          menuLayanan.map((m) => (
             <li>
               <a href={m.href}>{m.label}</a>
             </li>
@@ -78,6 +106,21 @@ const menu = [
         }
       </ul>
     </div>
+  </div>
+
+  <div class="container kunjungi">
+    <p class="kunjungi-label">Kunjungi juga</p>
+    <ul class="kunjungi-list">
+      {
+        kunjungiJuga.map((k) => (
+          <li>
+            <a href={k.href} target="_blank" rel="noopener noreferrer">
+              {k.label} <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 
   <div class="container bottom">
@@ -146,6 +189,37 @@ const menu = [
   .bottom {
     border-top: 1px solid var(--color-zinc);
     padding-block: var(--space-md);
+  }
+  .kunjungi {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+    padding-block: var(--space-md);
+    border-top: 1px solid var(--color-zinc);
+  }
+  .kunjungi-label {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .kunjungi-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md) var(--space-xl);
+  }
+  .kunjungi-list a {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+  .kunjungi-list a:hover {
+    color: var(--color-accent);
   }
   .sosmed {
     margin-top: var(--space-md);
