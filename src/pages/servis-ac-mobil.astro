@@ -1,0 +1,131 @@
+---
+// /servis-ac-mobil — gejala AC bermasalah + layanan AC.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerLayout from '../layouts/InnerLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { serviceSchema, breadcrumbSchema } from '../data/seo';
+import { waLink } from '../data/site';
+import '../styles/service-page.css';
+
+const path = '/servis-ac-mobil';
+const title = 'Service AC Mobil Bandung | Cuci AC & Isi Freon - Sinar Surya Auto Care';
+const description = 'Service AC mobil di Bojongsoang, Bandung: cuci evaporator, isi freon, cek kebocoran, sampai penggantian komponen. Kabin dingin lagi tanpa menebak-nebak penyebabnya.';
+
+const waMessage = 'Halo, mau tanya service AC mobil';
+const service = serviceSchema({
+  path,
+  name: 'Service AC Mobil',
+  serviceType: 'Perbaikan dan perawatan AC mobil',
+  description,
+  images: ['/images/galeri-servis-mesin.webp'],
+});
+const crumbs = breadcrumbSchema([{ name: 'Service AC Mobil', path }]);
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <span class="here">Service AC Mobil</span>
+        </nav>
+        <p class="eyebrow">Layanan Servis</p>
+        <h1>Service AC Mobil: Kabin Dingin Lagi, Bukan Sekadar Isi Freon</h1>
+        <p class="lead">
+          AC kurang dingin itu gejala, bukan penyakit. Freon yang terus diisi di atas sistem
+          yang bocor hanya membuang uang. Kami periksa dulu penyebabnya, baru kerjakan
+          yang memang perlu.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={waLink(waMessage)} target="_blank" rel="noopener noreferrer">Tanya Service AC via WhatsApp</a>
+          <a class="btn btn-secondary" href="#gejala">Cek Gejala AC</a>
+        </div>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/galeri-servis-mesin.webp"
+          alt="Mekanik mengerjakan pemeriksaan mesin dan komponen AC mobil SUV di bengkel Sinar Surya Auto Care Bojongsoang"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Pemeriksaan ruang mesin, termasuk komponen AC, di area servis kami.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section id="gejala">
+          <h2>Gejala AC Mobil yang Perlu Segera Dicek</h2>
+          <ul>
+            <li><strong>Tiupan sudah tidak dingin</strong> padahal kipas dan tombol terasa normal. Umumnya freon berkurang atau kompresor lemah.</li>
+            <li><strong>Dingin lalu hilang</strong> beberapa minggu setelah diisi freon. Ini pola khas sistem bocor, dan isi ulang tanpa cek kebocoran hanya menunda masalah.</li>
+            <li><strong>Bau apek saat AC dinyalakan</strong>, tanda evaporator dan kabin perlu dibersihkan, bukan sekadar diberi pewangi.</li>
+            <li><strong>Bunyi aneh dari ruang mesin</strong> saat kompresor bekerja, bisa dari bearing kompresor atau katup yang mulai rusak.</li>
+            <li><strong>Tiupan tidak merata</strong> antara kiri dan kanan kabin, sering karena blower atau saluran udara tersumbat kotoran.</li>
+          </ul>
+          <p>
+            Salah satu gejala di atas sudah cukup alasan untuk cek. Makin lama dibiarkan,
+            makin banyak komponen ikut bekerja tidak normal dan biaya perbaikan ikut naik.
+          </p>
+        </section>
+
+        <section>
+          <h2>Layanan AC yang Tersedia</h2>
+          <ul>
+            <li><strong>Cuci AC evaporator</strong> untuk membersihkan kotoran dan sumber bau di jantung sistem pendingin kabin.</li>
+            <li><strong>Pengecekan dan pengisian freon</strong> sesuai spesifikasi mobil, bukan tebakan kira-kira.</li>
+            <li><strong>Telusur kebocoran</strong> pada selang, sambungan, dan kondensor sebelum freon baru diisi.</li>
+            <li><strong>Pemeriksaan kompresor dan kipas</strong> kalau tiupan tetap lemah walau freon cukup.</li>
+            <li><strong>Penggantian komponen rusak</strong> seperti filter dryer atau kipas kondensor, dengan penjelasan dulu sebelum diganti.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Alur Pengerjaan</h2>
+          <ol class="steps">
+            <li>
+              <p><strong>Ceritakan gejalanya</strong></p>
+              <p>Chat WhatsApp kami: sebut tipe mobil dan gejala yang dirasakan, misalnya dingin lalu hilang atau bau apek.</p>
+            </li>
+            <li>
+              <p><strong>Pemeriksaan sistem</strong></p>
+              <p>Tekanan sistem, kondisi freon, dan kemungkinan kebocoran dicek langsung di bengkel.</p>
+            </li>
+            <li>
+              <p><strong>Diagnosis dan kesepakatan</strong></p>
+              <p>Mekanik menjelaskan penyebab dan pekerjaan yang perlu, beserta biayanya, sebelum mulai.</p>
+            </li>
+            <li>
+              <p><strong>Pengerjaan</strong></p>
+              <p>Cuci AC dan isi freon biasanya selesai di hari yang sama. Perbaikan besar mengikuti temuan di lapangan.</p>
+            </li>
+            <li>
+              <p><strong>Uji dingin</strong></p>
+              <p>Hasil dites bersama Anda sebelum serah terima, supaya yang keluar bengkel adalah kabin yang benar-benar dingin.</p>
+            </li>
+          </ol>
+          <div class="note">
+            <p>
+              Servis mobil buka Senin sampai Sabtu pukul 08.00 sampai 17.00. Booking slot
+              service AC via WhatsApp supaya pemeriksaan bisa langsung masuk tanpa menunggu
+              antrean servis lain selesai.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Kenapa Cuci AC Sering Dilewati?</h2>
+          <p>
+            Banyak pemilik mobil menganggap AC hanya butuh freon. Padahal evaporator yang
+            kotor membuat tiupan lemah dan kabin bau walau freon penuh. Membersihkan
+            evaporator secara berkala, terutama setelah musim hujan, membuat sistem bekerja
+            ringan dan bau apek tidak kembali. Kalau kabin Anda sudah terlanjur apek,
+            padukan dengan layanan steam wash kabin kami agar hasilnya tuntas.
+          </p>
+        </section>
+      </div>
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
