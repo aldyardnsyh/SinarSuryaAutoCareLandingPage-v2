@@ -1,0 +1,140 @@
+---
+// /servis-rutin — ganti oli, tune up, filter, edukasi interval.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerLayout from '../layouts/InnerLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { serviceSchema, breadcrumbSchema } from '../data/seo';
+import { waLink } from '../data/site';
+import '../styles/service-page.css';
+
+const path = '/servis-rutin';
+const title = 'Servis Rutin & Tune Up Mobil Bandung - Sinar Surya Auto Care';
+const description = 'Servis rutin mobil di Bojongsoang, Bandung: ganti oli mesin dan oli matic, tune up, filter, hingga pemeriksaan berkala. Estimasi biaya via WhatsApp sebelum datang.';
+
+const waMessage = 'Halo, mau tanya servis rutin atau tune up';
+const service = serviceSchema({
+  path,
+  name: 'Servis Rutin & Tune Up',
+  serviceType: 'Servis berkala mobil: ganti oli, tune up, filter',
+  description,
+  images: ['/images/galeri-pengerjaan-mesin.webp'],
+});
+const crumbs = breadcrumbSchema([{ name: 'Servis Rutin', path }]);
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <span class="here">Servis Rutin</span>
+        </nav>
+        <p class="eyebrow">Layanan Servis</p>
+        <h1>Servis Rutin Mobil: Oli, Tune Up, dan Filter Terjadwal</h1>
+        <p class="lead">
+          Mesin sehat itu hasil kebiasaan, bukan kebetulan. Servis berkala yang jalan sesuai
+          jadwal menjaga konsumsi bahan bakar, menahan biaya besar di kemudian hari, dan
+          membuat mobil tetap enak dipakai setiap pagi.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={waLink(waMessage)} target="_blank" rel="noopener noreferrer">Tanya Servis Rutin via WhatsApp</a>
+          <a class="btn btn-secondary" href="#interval">Berapa Sering Servis?</a>
+        </div>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/galeri-pengerjaan-mesin.webp"
+          alt="Mekanik Sinar Surya Auto Care mengerjakan pemeriksaan mesin mobil Toyota di bengkel Bojongsoang, Bandung"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Pengerjaan servis mesin di area servis kami, Bojongsoang.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section>
+          <h2>Cakupan Servis Rutin di Bengkel Kami</h2>
+          <p>
+            Servis rutin bukan sekadar ganti oli. Pada setiap kunjungan, mekanik memeriksa
+            kondisi mesin sesuai jarak tempuh mobil Anda, lalu mengerjakan apa yang memang
+            butuh, tanpa menambah item yang belum waktunya.
+          </p>
+          <ul>
+            <li><strong>Ganti oli mesin dan filter oli</strong> sesuai spesifikasi tipe mobil Anda, bukan sekadar oli yang tersedia.</li>
+            <li><strong>Ganti oli matic</strong> pada interval yang disarankan, supaya transmisi tetap halus saat menembus lalu lintas Bandung.</li>
+            <li><strong>Tune up</strong>: pemeriksaan busi, throttle, dan penyetelan agar mesin idle stabil dan tarikan responsif.</li>
+            <li><strong>Filter udara dan filter kabin</strong> dicek dan diganti bila sudah kotor, penting saat musim hujan dan jalan berdebu.</li>
+            <li><strong>Cek cairan</strong>: rem, radiator, dan power steering, plus pemeriksaan kebocoran di bawah kap.</li>
+          </ul>
+        </section>
+
+        <section id="interval">
+          <h2>Berapa Sering Mobil Perlu Servis?</h2>
+          <p>
+            Patokan paling aman tetap buku manual mobil Anda, karena tiap pabrikan menetapkan
+            interval berbeda. Sebagai gambaran umum, oli mesin mineral biasanya diganti sekitar
+            tiap 5.000 km, sedangkan oli full synthetic bisa bertahan lebih jauh sebelum
+            diganti. Yang perlu diingat, pemakaian harian di kota dengan macet dan jalan
+            pendek memangkas umur oli lebih cepat dibanding mobil yang jalannya tol lancar.
+          </p>
+          <p>
+            Jika Anda tidak yakin servis terakhir kapan, tidak masalah. Datang saja dan
+            mekanik kami bisa melihat kondisi oli serta part yang dipasang, lalu memberi
+            rekomendasi yang masuk akal tanpa mengerjakan yang belum perlu.
+          </p>
+        </section>
+
+        <section>
+          <h2>Alur Pengerjaan</h2>
+          <ol class="steps">
+            <li>
+              <p><strong>Chat WhatsApp dulu</strong></p>
+              <p>Sebut merek, tipe, dan jarak tempuh mobil. Admin memberi estimasi pengerjaan dan slot hari itu.</p>
+            </li>
+            <li>
+              <p><strong>Pemeriksaan awal</strong></p>
+              <p>Mekanik mengecek kondisi oli, filter, dan titik yang wajib diperiksa sesuai jarak tempuh.</p>
+            </li>
+            <li>
+              <p><strong>Kesepakatan pekerjaan</strong></p>
+              <p>Yang akan diganti dan biayanya disepakati dulu. Tidak ada item tambahan yang jalan tanpa Anda tahu.</p>
+            </li>
+            <li>
+              <p><strong>Pengerjaan</strong></p>
+              <p>Sebagian besar paket servis rutin selesai di hari yang sama dalam hitungan jam.</p>
+            </li>
+            <li>
+              <p><strong>Serah terima dan catatan berikutnya</strong></p>
+              <p>Kami ceritakan apa yang sudah dikerjakan dan kira-kira kapan servis berikutnya, jadi Anda tinggal jalan sesuai jadwal.</p>
+            </li>
+          </ol>
+          <div class="note">
+            <p>
+              Jam servis mobil: Senin sampai Sabtu pukul 08.00 sampai 17.00, Minggu tutup.
+              Slot same-day tersedia selama antrean hari itu masih ada, konfirmasinya lewat WhatsApp.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Gejala yang Bilang Servis Sudah Terlambat</h2>
+          <ul>
+            <li>Mesin terasa kasar saat idle atau tarikan mulai berat di RPM rendah.</li>
+            <li>Konsumsi bahan bakar naik tanpa perubahan pola nyetir.</li>
+            <li>Oli di dipstick sudah hitam pekat atau volumenya turun.</li>
+            <li>Muncul bunyi kasar di bagian bawah kap saat mesin dingin dinyalakan pagi.</li>
+          </ul>
+          <p>
+            Kalau satu saja gejala di atas muncul, jangan tunggu kilometer berikutnya.
+            Chat WhatsApp kami, ceritakan gejalanya, dan kita jadwalkan pemeriksaan
+            sesegera mungkin.
+          </p>
+        </section>
+      </div>
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
