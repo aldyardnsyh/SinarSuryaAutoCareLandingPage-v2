@@ -11,18 +11,27 @@ import { SITE, SITE_URL, MAPS_EMBED_URL } from '../data/site';
 export interface Props {
   title?: string;
   description?: string;
+  /** Path halaman untuk canonical & og:url (mis. '/cuci-mobil-hidrolik'). */
+  path?: string;
 }
 
 const {
-  title = 'Bengkel Mobil & Cuci Hidrolik Bojongsoang Bandung - Sinar Surya Auto Care',
-  description = 'Sinar Surya Auto Care, bengkel mobil & cuci hidrolik di Jl. Cijagra No.8, Bojongsoang, Bandung. Servis rutin, ganti oli, AC, kaki-kaki, cuci kolong hidrolik & steam wash. Mudah dijangkau dari Dayeuhkolot, Baleendah, Buahbatu. Chat WhatsApp untuk harga.',
+  title = 'Cuci Mobil Hidrolik & Bengkel Mobil Bandung | Sinar Surya Auto Care',
+  description = 'Sinar Surya Auto Care, bengkel mobil & cuci hidrolik di Jl. Cijagra No.8, Bojongsoang, Bandung Selatan. Servis rutin, ganti oli, AC, kaki-kaki, cuci kolong hidrolik & steam wash. Chat WhatsApp untuk harga.',
+  path = '/',
 } = Astro.props;
 
-const canonical = new URL('/', SITE_URL).href;
+const canonical = new URL(path, SITE_URL).href;
 const ogImage = new URL('/og-image.jpg', SITE_URL).href;
 
 // JSON-LD dari data listing Google Maps resmi (alamat, geo, jam operasional).
-const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
+// sameAs: sosial media bengkel + dua domain keluarga lain (satu usaha yang sama).
+const sameAs = [
+  SITE.social.facebook,
+  SITE.social.instagram,
+  'https://www.sinarsuryaautocare.biz.id',
+  'https://www.bengkelmobilbojongsoang.web.id',
+].filter(Boolean);
 ---
 
 <!doctype html>
@@ -47,7 +56,7 @@ const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
     <!-- Open Graph / preview share WhatsApp & Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.name} />
-    <meta property="og:title" content="Sinar Surya Auto Care - Bengkel Mobil & Cuci Hidrolik Bojongsoang" />
+    <meta property="og:title" content="Cuci Mobil Hidrolik & Bengkel Mobil Bandung - Sinar Surya Auto Care" />
     <meta property="og:description" content="Servis rutin, perbaikan, sampai cuci mobil hidrolik di Jl. Cijagra No.8, Bojongsoang, Kabupaten Bandung." />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -56,7 +65,7 @@ const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="id_ID" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sinar Surya Auto Care - Bengkel Mobil & Cuci Hidrolik Bojongsoang" />
+    <meta name="twitter:title" content="Cuci Mobil Hidrolik & Bengkel Mobil Bandung - Sinar Surya Auto Care" />
     <meta name="twitter:description" content="Servis rutin, ganti oli, AC, kaki-kaki, sampai cuci hidrolik & steam wash di Bojongsoang, Bandung. Buka setiap hari." />
     <meta name="twitter:image" content={ogImage} />
 
