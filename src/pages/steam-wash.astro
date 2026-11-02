@@ -1,0 +1,137 @@
+---
+// /steam-wash — steam wash interior & eksterior.
+// Secondary keyword: "steam wash mobil bandung".
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerLayout from '../layouts/InnerLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { serviceSchema, breadcrumbSchema } from '../data/seo';
+import { waLink } from '../data/site';
+import '../styles/service-page.css';
+
+const path = '/steam-wash';
+const title = 'Steam Wash Mobil Bandung | Interior Higienis - Sinar Surya Auto Care';
+const description = 'Steam wash mobil di Bojongsoang, Bandung: kabin dibersihkan dengan uap panas sehingga higienis, bebas lembap, dan cepat kering. Estimasi paket via WhatsApp.';
+
+const waMessage = 'Halo, mau tanya steam wash mobil';
+const service = serviceSchema({
+  path,
+  name: 'Steam Wash Mobil',
+  serviceType: 'Steam wash interior dan eksterior mobil',
+  description,
+  images: ['/images/galeri-detailing.webp'],
+});
+const crumbs = breadcrumbSchema([{ name: 'Steam Wash', path }]);
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <span class="here">Steam Wash</span>
+        </nav>
+        <p class="eyebrow">Layanan Cuci</p>
+        <h1>Steam Wash Mobil: Kabin Bersih Tanpa Bekas Air</h1>
+        <p class="lead">
+          Uap panas masuk ke celah yang lap kain tidak pernah kejar: sela jok, karpet dalam,
+          plafon, dan di dalam panel pintu. Hasilnya kabin yang bersih, cepat kering, dan tidak
+          nyampur aroma lembap.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={waLink(waMessage)} target="_blank" rel="noopener noreferrer">Tanya Steam Wash via WhatsApp</a>
+          <a class="btn btn-secondary" href="#manfaat">Kenapa Steam?</a>
+        </div>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/galeri-detailing.webp"
+          alt="Mobil dibuka kap dan pintunya saat proses steam wash dan detailing di Sinar Surya Auto Care Bojongsoang"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Sesi steam dan detailing: pintu dan kap dibuka agar setiap celah terjangkau.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section>
+          <h2>Apa yang Dikerjakan Saat Steam Wash?</h2>
+          <p>
+            Steam wash memakai uap panas bertekanan untuk melonggarkan kotoran pada permukaan
+            yang sensitif. Pada interior, uap menyapu jok, karpet, plafon, dashboard, dan
+            sela-sela panel pintu tanpa membuat material jenuh air. Pada eksterior, steam
+            dipakai untuk mengejar sisa kotoran di celah emblem, list bodi, dan tepi kaca yang
+            sering luput saat cuci biasa.
+          </p>
+          <p>
+            Karena air yang dipakai sangat sedikit, permukaan tidak lembap lama. Jok dan
+            plafon yang biasanya butuh setengah hari untuk benar-benar kering bisa terasa
+            kering jauh lebih cepat, dan risiko muncul bau apek ikut turun.
+          </p>
+        </section>
+
+        <section id="manfaat">
+          <h2>Manfaat Steam Wash untuk Mobil Anda</h2>
+          <ul>
+            <li><strong>Kabin lebih higienis.</strong> Panas uap membantu melepas kotoran dan mencegah berkembangnya sumber bau di permukaan jok dan karpet.</li>
+            <li><strong>Cepat kering.</strong> Minim air berarti minim lembap, jadi mobil bisa langsung dipakai tanpa kabin yang pengap.</li>
+            <li><strong>Aman untuk material sensitif.</strong> Plafon, jok kulit, dan panel digital dibersihkan tanpa disemprot air deras.</li>
+            <li><strong>Celah bersih.</strong> Sela AC, tombol, dan rel sabuk pengaman yang jadi sarang debu ikut terjangan uap.</li>
+            <li><strong>Bau kabin turun.</strong> Sumber bau seperti tumpahan lama dan lembap karpet diangkat, bukan ditutup pewangi.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Proses Pengerjaan</h2>
+          <ol class="steps">
+            <li>
+              <p><strong>Konsultasi kondisi kabin</strong></p>
+              <p>Anda cerita via WhatsApp atau langsung di tempat: dari mana bau atau noda yang paling mengganggu, dan area mana yang mau difokuskan.</p>
+            </li>
+            <li>
+              <p><strong>Vacuum tahap pertama</strong></p>
+              <p>Debu dan pasir kasar di jok, karpet, dan bagasi disedot dulu supaya uap bekerja di kotoran yang menempel, bukan di atas pasir.</p>
+            </li>
+            <li>
+              <p><strong>Semprot uap area per area</strong></p>
+              <p>Kru mengerjakan jok, karpet, plafon, lalu panel pintu satu per satu dengan kepala semprot yang sesuai permukaan.</p>
+            </li>
+            <li>
+              <p><strong>Detailing celah</strong></p>
+              <p>Sela tombol, rel jok, dan tepi kaca dikejar dengan steam dan kuas kecil.</p>
+            </li>
+            <li>
+              <p><strong>Pengeringan dan serah terima</strong></p>
+              <p>Kabin dibiarkan terbuka sebentar agar sisa lembap hilang, lalu hasil dicek bersama sebelum mobil kembali ke Anda.</p>
+            </li>
+          </ol>
+          <div class="note">
+            <p>
+              Steam wash bisa diambil sendiri atau dipadukan dengan cuci hidrolik di kunjungan
+              yang sama, sehingga bodi dan kabin bersih sekaligus. Booking slot via WhatsApp
+              supaya tidak menunggu lama saat antrean cuci ramai.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Kapan Kabin Anda Butuh Steam Wash?</h2>
+          <ul>
+            <li>Kabin mulai berbau apek atau bau basah setelah hujan dan jok ikut basah.</li>
+            <li>Ada bekas tumpahan makanan, susu anak, atau rembesan air hujan di jok dan karpet.</li>
+            <li>Mobil sering jadi kendaraan antar anak atau dipakai anggota keluarga dengan hidung sensitif.</li>
+            <li>Mobil lama dibeli bekas dan riwayat kabinnya belum pernah dirawat mendalam.</li>
+          </ul>
+          <p>
+            Untuk mobil harian keluarga, menyisipkan steam wash di antara jadwal cuci biasa
+            membuat kabin tetap layak ditempati sepanjang tahun, terutama di musim hujan
+            Bandung saat kelembapan naik.
+          </p>
+        </section>
+      </div>
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
