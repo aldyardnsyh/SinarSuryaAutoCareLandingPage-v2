@@ -1,20 +1,22 @@
 ---
 // Navbar — sticky, hitam, hamburger mobile via ~10 baris vanilla JS
+// Anchor menuju section homepage: dari halaman sub-path dipakai "/#anchor".
 import Logo from './Logo.astro';
 import { SITE, waLink } from '../data/site';
 
+const base = Astro.url.pathname === '/' ? '' : '/';
 const menu = [
-  { href: '#beranda', label: 'Beranda' },
-  { href: '#tentang', label: 'Tentang' },
-  { href: '#layanan', label: 'Layanan' },
-  { href: '#galeri', label: 'Galeri' },
-  { href: '#kontak', label: 'Kontak' },
+  { href: `${base}#beranda`, label: 'Beranda' },
+  { href: `${base}#tentang`, label: 'Tentang' },
+  { href: `${base}#layanan`, label: 'Layanan' },
+  { href: `${base}#galeri`, label: 'Galeri' },
+  { href: `${base}#kontak`, label: 'Kontak' },
 ];
 ---
 
 <header class="navbar">
   <div class="container nav-inner">
-    <a href="#beranda" class="brand" aria-label={`${SITE.name}, kembali ke atas`}>
+    <a href={`${base}#beranda`} class="brand" aria-label={`${SITE.name}, kembali ke atas`}>
       <Logo size={32} />
       <span class="brand-text">
         <strong>{SITE.shortName}</strong>

@@ -1,8 +1,18 @@
 ---
 // Layanan — list bernomor besar (bukan kartu), Grup A + Grup B
-// Tanpa harga. Tiap baris punya link tanya harga WhatsApp.
+// Tanpa harga. Tiap baris punya link tanya harga WhatsApp, dan baris
+// yang punya halaman layanan sendiri di-tautkan dari sini.
 import { GRUP_A, GRUP_B } from '../data/layanan';
 import { waLayanan } from '../data/site';
+
+// id layanan -> halaman detail (yang belum punya halaman tidak di-tautkan)
+const PAGE_BY_ID: Record<string, string> = {
+  'servis-rutin': '/servis-rutin',
+  'service-ac': '/servis-ac-mobil',
+  'kaki-kaki': '/servis-kaki-kaki',
+  'cuci-mobil-hidrolik': '/cuci-mobil-hidrolik',
+  'steam-wash': '/steam-wash',
+};
 ---
 
 <section class="layanan container" id="layanan">
@@ -21,7 +31,7 @@ import { waLayanan } from '../data/site';
             {String(i + 1).padStart(2, '0')}
           </span>
           <div class="body">
-            <h4>{l.nama}</h4>
+            <h4>{PAGE_BY_ID[l.id] ? <a href={PAGE_BY_ID[l.id]}>{l.nama}</a> : l.nama}</h4>
             <p>{l.deskripsi}</p>
           </div>
           <a class="wa-link" href={waLayanan(l.nama)} target="_blank" rel="noopener noreferrer">
@@ -43,7 +53,7 @@ import { waLayanan } from '../data/site';
             {String(GRUP_A.length + i + 1).padStart(2, '0')}
           </span>
           <div class="body">
-            <h4>{l.nama}</h4>
+            <h4>{PAGE_BY_ID[l.id] ? <a href={PAGE_BY_ID[l.id]}>{l.nama}</a> : l.nama}</h4>
             <p>{l.deskripsi}</p>
           </div>
           <a class="wa-link" href={waLayanan(l.nama)} target="_blank" rel="noopener noreferrer">

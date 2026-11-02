@@ -1,11 +1,18 @@
 ---
 // WhatsAppFloat — bubble oranye kanan-bawah, link statis tanpa JS
 import { waLink } from '../data/site';
+
+export interface Props {
+  /** Prefill pesan WhatsApp khusus halaman ini. */
+  message?: string;
+}
+
+const { message } = Astro.props;
 ---
 
 <a
   class="wa-float"
-  href={waLink()}
+  href={message ? waLink(message) : waLink()}
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Chat WhatsApp Sinar Surya Auto Care"

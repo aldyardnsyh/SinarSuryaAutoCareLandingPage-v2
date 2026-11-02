@@ -1,0 +1,26 @@
+---
+// InnerLayout — kerangka halaman di dalam BaseLayout: TopInfoBar,
+// Navbar, <main>, Footer, WhatsAppFloat. Dipakai semua halaman
+// supaya struktur "Industrial Garage" konsisten.
+import TopInfoBar from '../components/TopInfoBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+export interface Props {
+  /** Prefill pesan WhatsApp khusus halaman ini (tanpa awalan, waLink menambahkan sapaan). */
+  waMessage?: string;
+}
+
+const { waMessage } = Astro.props;
+---
+
+<TopInfoBar />
+<Navbar />
+
+<main>
+  <slot />
+</main>
+
+<Footer />
+<WhatsAppFloat message={waMessage} />
