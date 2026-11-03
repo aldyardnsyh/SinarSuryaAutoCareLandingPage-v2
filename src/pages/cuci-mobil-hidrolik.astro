@@ -5,6 +5,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InnerLayout from '../layouts/InnerLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
+import RelatedServices from '../components/RelatedServices.astro';
 import { serviceSchema, breadcrumbSchema } from '../data/seo';
 import { waLink } from '../data/site';
 import '../styles/service-page.css';
@@ -27,7 +28,13 @@ const service = serviceSchema({
 const crumbs = breadcrumbSchema([{ name: 'Cuci Mobil Hidrolik', path }]);
 ---
 
-<BaseLayout title={title} description={description} path={path}>
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogTitle="Cuci Mobil Hidrolik Bandung: Kolong Sampai Sasis Ikut Bersih"
+  ogDescription={description}
+>
   <InnerLayout waMessage={waMessage}>
     <article>
       <header class="page-hero container">
@@ -156,6 +163,14 @@ const crumbs = breadcrumbSchema([{ name: 'Cuci Mobil Hidrolik', path }]);
           </p>
         </section>
       </div>
+
+      <RelatedServices
+        items={[
+          { href: '/steam-wash', label: 'Steam Wash Interior', desc: 'Kabin dibersihkan uap panas, higienis dan cepat kering.' },
+          { href: '/servis-rutin', label: 'Servis Rutin & Tune Up', desc: 'Ganti oli, tune up, dan filter sesuai jadwal mobil Anda.' },
+          { href: '/blog/apa-itu-cuci-mobil-hidrolik', label: 'Artikel: Apa Itu Cuci Mobil Hidrolik?', desc: 'Penjelasan singkat metode cuci kolong dengan lift hidrolik.' },
+        ]}
+      />
 
       <CtaBand waMessage={waMessage} />
     </article>

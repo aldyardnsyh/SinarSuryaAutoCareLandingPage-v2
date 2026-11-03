@@ -3,6 +3,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InnerLayout from '../layouts/InnerLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
+import RelatedServices from '../components/RelatedServices.astro';
 import { serviceSchema, breadcrumbSchema } from '../data/seo';
 import { waLink } from '../data/site';
 import '../styles/service-page.css';
@@ -22,7 +23,13 @@ const service = serviceSchema({
 const crumbs = breadcrumbSchema([{ name: 'Servis Kaki-kaki', path }]);
 ---
 
-<BaseLayout title={title} description={description} path={path}>
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogTitle="Servis Kaki-kaki Mobil Bandung: Rem & Suspensi"
+  ogDescription={description}
+>
   <InnerLayout waMessage={waMessage}>
     <article>
       <header class="page-hero container">
@@ -122,6 +129,14 @@ const crumbs = breadcrumbSchema([{ name: 'Servis Kaki-kaki', path }]);
           </p>
         </section>
       </div>
+
+      <RelatedServices
+        items={[
+          { href: '/servis-rutin', label: 'Servis Rutin & Tune Up', desc: 'Ganti oli, tune up, dan filter sesuai jadwal mobil Anda.' },
+          { href: '/cuci-mobil-hidrolik', label: 'Cuci Mobil Hidrolik', desc: 'Kolong dan sasis ikut tercuci bersih dengan lift hidrolik.' },
+          { href: '/lokasi', label: 'Lokasi & Arah', desc: 'Titik pin bengkel dan arah perjalanan dari sekitar Bandung.' },
+        ]}
+      />
 
       <CtaBand waMessage={waMessage} />
     </article>

@@ -45,6 +45,16 @@
   gap: var(--space-md);
 }
 
+/* ---------- Artikel blog: baris meta tanggal ---------- */
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
 /* ---------- Foto asli bengkel ---------- */
 .page-photo {
   padding-block: var(--space-xl);
