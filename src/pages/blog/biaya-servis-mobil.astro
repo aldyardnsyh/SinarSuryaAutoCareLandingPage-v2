@@ -1,0 +1,132 @@
+---
+// /blog/biaya-servis-mobil — target keyword: "biaya servis mobil",
+// "harga servis mobil". Sesuai aturan bengkel: TANPA daftar harga.
+// Artikel membahas faktor-faktor biaya, bukan angka.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerLayout from '../../layouts/InnerLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { articleSchema, breadcrumbSchema } from '../../data/seo';
+import '../../styles/service-page.css';
+
+const path = '/blog/biaya-servis-mobil';
+const title = 'Yang Memengaruhi Biaya Servis Mobil - Sinar Surya Auto Care';
+const description = 'Biaya servis mobil ditentukan jenis pekerjaan, tipe mobil, spesifikasi part, dan temuan saat pemeriksaan. Kenali faktornya supaya bisa menaksir sebelum datang ke bengkel.';
+
+const waMessage = 'Halo, mau tanya estimasi biaya servis';
+const service = articleSchema({
+  path,
+  headline: 'Yang Memengaruhi Biaya Servis Mobil',
+  description,
+  image: '/images/galeri-area-servis.webp',
+  datePublished: '2026-11-03',
+});
+const crumbs = breadcrumbSchema([
+  { name: 'Blog', path: '/blog' },
+  { name: 'Biaya Servis Mobil', path },
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} ogTitle="Yang Memengaruhi Biaya Servis Mobil" ogDescription={description}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <a href="/blog">Blog</a> <span aria-hidden="true">/</span> <span class="here">Biaya Servis</span>
+        </nav>
+        <p class="eyebrow">Blog &amp; Tips · Servis</p>
+        <h1>Yang Memengaruhi Biaya Servis Mobil</h1>
+        <p class="lead">
+          "Servis oli berapa?" itu pertanyaan yang wajar, tapi jawabannya selalu
+          bergantung pada beberapa faktor, bukan satu angka untuk semua mobil.
+          Artikel ini menjelaskan faktor-faktor tersebut supaya Anda bisa menaksir
+          biaya dengan lebih akurat sebelum datang ke bengkel.
+        </p>
+        <p class="post-meta">Dipublikasikan 3 November 2026 · Sinar Surya Auto Care</p>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/galeri-area-servis.webp"
+          alt="Mekanik mengerjakan mobil di area servis Sinar Surya Auto Care Bojongsoang, Bandung"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Area kerja kami di Bojongsoang: setiap pekerjaan diawali pemeriksaan.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section>
+          <h2>Faktor 1: Jenis Pekerjaan yang Dibutuhkan</h2>
+          <p>
+            Ganti oli rutin, tune up, perbaikan AC, dan pengerjaan kaki-kaki punya
+            lingkup dan durasi yang berbeda jauh. Semakin banyak komponen yang
+            terlibat dan semakin lama pengerjaannya, semakin beragam biayanya.
+            Karena itu mekanik perlu tahu dulu keluhan atau kebutuhan Anda, bukan
+            cuma "mau servis", supaya lingkup pekerjaannya jelas sejak awal.
+          </p>
+        </section>
+
+        <section>
+          <h2>Faktor 2: Merek, Tipe, dan Usia Mobil</h2>
+          <p>
+            Oli, filter, dan part lain mengikuti spesifikasi tiap mobil. Mobil
+            keluarga harian biasanya partnya mudah didapat dan lugas dikerjakan,
+            sementara mobil tertentu butuh spesifikasi oli atau part khusus yang
+            harganya berbeda. Usia mobil juga berpengaruh: mobil yang sudah jalan
+            ratusan ribu kilometer sering butuh pemeriksaan lebih teliti karena
+            komponennya mulai menunjukkan usia.
+          </p>
+        </section>
+
+        <section>
+          <h2>Faktor 3: Spesifikasi Part dan Oli yang Dipilih</h2>
+          <p>
+            Untuk satu kebutuhan yang sama, biasanya ada beberapa pilihan spesifikasi
+            oli dan part. Pilihan inilah yang paling memengaruhi angka akhir, dan
+            sebaiknya diputuskan bersama mekanik berdasarkan buku manual dan pola
+            pemakaian, bukan sekadar yang paling murah atau yang paling mahal.
+          </p>
+        </section>
+
+        <section>
+          <h2>Faktor 4: Temuan Saat Pemeriksaan</h2>
+          <p>
+            Kadang keluhan yang disampaikan belum tentu akar masalahnya. Contoh
+            paling sering: AC kurang dingin yang penyebabnya bocor, bukan kurang
+            freon. Setelah pemeriksaan, lingkup kerja bisa bertambah atau justru
+            lebih ringkas dari dugaan. Karena itu estimasi yang paling akurat selalu
+            diberikan setelah mobil diperiksa langsung, bukan sekadar dari cerita.
+          </p>
+        </section>
+
+        <section>
+          <h2>Cara Mendapat Estimasi yang Akurat</h2>
+          <p>
+            Kalau ingin menaksir biaya sebelum datang, siapkan tiga informasi ini
+            saat chat WhatsApp kami: merek dan tipe mobil, keluhan atau kebutuhan
+            yang dirasakan, dan kira-kira jarak tempuh mobil. Dengan tiga informasi
+            itu, admin bisa memberi gambaran estimasi dan durasi pengerjaan yang
+            jauh lebih mendekati kondisi sebenarnya.
+          </p>
+          <p>
+            Di bengkel kami, pekerjaan yang akan dikerjakan dan biayanya disepakati
+            dulu sebelum berjalan. Kalau saat pemeriksaan ditemukan hal baru, Anda
+            dimintai persetujuan dulu, jadi tidak ada biaya di luar kesepakatan.
+          </p>
+        </section>
+      </div>
+
+      <RelatedServices
+        items={[
+          { href: '/servis-rutin', label: 'Servis Rutin & Tune Up', desc: 'Ganti oli, tune up, dan filter sesuai jadwal mobil Anda.' },
+          { href: '/blog/kapan-ganti-oli-mobil', label: 'Artikel: Kapan Ganti Oli Mobil?', desc: 'Panduan interval ganti oli mesin dan oli matic.' },
+          { href: '/servis-ac-mobil', label: 'Service AC Mobil', desc: 'Cuci AC, isi freon, sampai perbaikan biar kabin dingin lagi.' },
+        ]}
+      />
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />

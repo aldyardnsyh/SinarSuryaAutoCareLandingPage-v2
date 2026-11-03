@@ -1,0 +1,126 @@
+---
+// /blog/apa-itu-cuci-mobil-hidrolik — target keyword: "cuci mobil hidrolik",
+// "cuci kolong". Versi ringkas dari halaman layanan; detail penuh ada di
+// /cuci-mobil-hidrolik. Foto asli bengkel.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerLayout from '../../layouts/InnerLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { articleSchema, breadcrumbSchema } from '../../data/seo';
+import '../../styles/service-page.css';
+
+const path = '/blog/apa-itu-cuci-mobil-hidrolik';
+const title = 'Apa Itu Cuci Mobil Hidrolik? - Sinar Surya Auto Care';
+const description = 'Cuci mobil hidrolik mengangkat mobil dengan lift sehingga kolong dan sasis ikut tersiram bersih. Kenali prosesnya, bedanya dengan cuci biasa, dan kapan mobil perlu.';
+
+const waMessage = 'Halo, mau tanya cuci mobil hidrolik';
+const service = articleSchema({
+  path,
+  headline: 'Apa Itu Cuci Mobil Hidrolik?',
+  description,
+  image: '/images/hero-bengkel-cuci-hidrolik-bojongsoang.webp',
+  datePublished: '2026-11-03',
+});
+const crumbs = breadcrumbSchema([
+  { name: 'Blog', path: '/blog' },
+  { name: 'Apa Itu Cuci Mobil Hidrolik', path },
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} ogTitle="Apa Itu Cuci Mobil Hidrolik?" ogDescription={description}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <a href="/blog">Blog</a> <span aria-hidden="true">/</span> <span class="here">Cuci Mobil Hidrolik</span>
+        </nav>
+        <p class="eyebrow">Blog &amp; Tips · Cuci &amp; Steam</p>
+        <h1>Apa Itu Cuci Mobil Hidrolik?</h1>
+        <p class="lead">
+          Istilah ini terdengar teknis, tapi konsepnya sederhana: mobil diangkat utuh
+          dengan lift hidrolik supaya bagian bawah yang biasanya tersembunyi bisa
+          ikut dicuci bersih. Artikel ini menjelaskan prosesnya secara singkat dan
+          kapan mobil Anda sebaiknya lewat proses ini.
+        </p>
+        <p class="post-meta">Dipublikasikan 3 November 2026 · Sinar Surya Auto Care</p>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/hero-bengkel-cuci-hidrolik-bojongsoang.webp"
+          alt="Mobil diangkat lift hidrolik saat cuci kolong di Sinar Surya Auto Care, Bojongsoang, Bandung"
+          width="1600" height="900" loading="eager" />
+        <figcaption>Mobil terangkat penuh di atas lift hidrolik, kolong terbuka untuk disemprot.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section>
+          <h2>Cuci Biasa Berhenti di yang Terlihat</h2>
+          <p>
+            Pada cuci mobil biasa, bodi, kaca, dan velg dicuci dari luar sementara
+            mobil tetap menapak di lantai. Bagian bawah kendaraan, yaitu kolong,
+            sasis, dan sela kaki-kaki, tidak terjangkau semprotan sama sekali. Padahal
+            bagian itulah yang paling banyak kena lumpur, debu jalanan, dan genangan.
+          </p>
+        </section>
+
+        <section>
+          <h2>Pembedanya Ada di Lift Hidrolik</h2>
+          <p>
+            Dalam cuci hidrolik, mobil diangkat utuh dengan lift setelah bodi selesai
+            dicuci. Saat mobil terangkat, seluruh bagian bawah terbuka: kolong sasis,
+            crossmember, tepi baja bodi, sampai sela-sela kaki-kaki. Semuanya bisa
+            disemprot sampai lumpur dan kotoran yang mengering lepas. Setelah itu
+            mobil diturunkan, dikerjakan tahap akhir, lalu hasil dicek bersama
+            sebelum serah terima.
+          </p>
+        </section>
+
+        <section>
+          <h2>Kenapa Kolong Penting Dijaga?</h2>
+          <p>
+            Bagian bawah mobil paling rentan jadi tempat karat bermula. Kotoran yang
+            menempel lama menahan lembap di permukaan baja, dan lembap yang dibiarkan
+            itu lama-kelamaan memicu karat. Membersihkan kolong secara berkala
+            membantu menahan proses itu, apalagi untuk mobil yang sering lewat jalan
+            berlumpur, genangan, atau baru pulang dari perjalanan jauh.
+          </p>
+        </section>
+
+        <section>
+          <h2>Kapan Mobil Perlu Cuci Hidrolik?</h2>
+          <ul>
+            <li>Setelah melewati banjir, genangan, atau jalanan tanah yang berlumpur.</li>
+            <li>Sekitar satu sampai dua bulan sekali untuk mobil harian, lebih sering saat musim hujan.</li>
+            <li>Saat mulai ada bau lembap dari kabin yang bisa berasal dari bagian bawah yang kotor.</li>
+            <li>Sebelum servis berkala atau sebelum menjual mobil, supaya kondisi asli terlihat jelas.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Bisa Dipadukan dengan Steam Wash</h2>
+          <p>
+            Banyak pemilik mobil menggabungkan cuci hidrolik dengan steam wash
+            interior dalam satu kunjungan, jadi bagian bawah dan bagian dalam kabin
+            beres sekaligus. Untuk penjadwalan, cuci hidrolik buka setiap hari dan
+            slotnya sebaiknya dikonfirmasi dulu lewat WhatsApp, terutama saat akhir
+            pekan yang antreannya lebih ramai.
+          </p>
+        </section>
+      </div>
+
+      <RelatedServices
+        items={[
+          { href: '/cuci-mobil-hidrolik', label: 'Cuci Mobil Hidrolik', desc: 'Halaman layanan lengkap: proses, tujuan, dan pengerjaan.' },
+          { href: '/steam-wash', label: 'Steam Wash Interior', desc: 'Kabin dibersihkan uap panas, higienis dan cepat kering.' },
+          { href: '/lokasi', label: 'Lokasi & Arah', desc: 'Titik pin bengkel dan arah perjalanan dari sekitar Bandung.' },
+        ]}
+      />
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />

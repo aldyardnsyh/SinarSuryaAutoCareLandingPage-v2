@@ -43,3 +43,29 @@ export function breadcrumbSchema(
     })),
   };
 }
+
+/** Skema BlogPosting untuk satu artikel blog.
+ *  Penulis dan penerbit merujuk entitas bisnis di BaseLayout. */
+export function articleSchema(p: {
+  path: string;
+  headline: string;
+  description: string;
+  image: string; // path relatif, mis. '/og-image.jpg'
+  datePublished: string; // ISO 8601
+}): Record<string, unknown> {
+  const url = `${SITE_URL}${p.path}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: p.headline,
+    description: p.description,
+    image: `${SITE_URL}${p.image}`,
+    url,
+    datePublished: p.datePublished,
+    dateModified: p.datePublished,
+    inLanguage: 'id-ID',
+    author: { '@type': 'Organization', name: 'Sinar Surya Auto Care', url: SITE_URL },
+    publisher: { '@id': `${SITE_URL}/#business` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  };
+}

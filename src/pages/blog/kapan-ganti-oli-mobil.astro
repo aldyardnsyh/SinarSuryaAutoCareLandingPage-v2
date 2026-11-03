@@ -1,0 +1,148 @@
+---
+// /blog/kapan-ganti-oli-mobil — target keyword: "kapan ganti oli mobil",
+// "perawatan mobil". Isi patokan umum dari buku manual pabrikan + kebiasaan
+// kerja bengkel. Tanpa klaim yang belum terverifikasi.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerLayout from '../../layouts/InnerLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { articleSchema, breadcrumbSchema } from '../../data/seo';
+import '../../styles/service-page.css';
+
+const path = '/blog/kapan-ganti-oli-mobil';
+const title = 'Kapan Waktu yang Tepat Ganti Oli Mobil? - Sinar Surya Auto Care';
+const description = 'Panduan interval ganti oli mesin dan oli matic untuk mobil harian: patokan kilometer, jenis oli, tanda oli mulai habis, dan pengaruh macet kota. Tanya mekanik via WhatsApp.';
+
+const waMessage = 'Halo, mau tanya jadwal servis rutin dan ganti oli';
+const service = articleSchema({
+  path,
+  headline: 'Kapan Waktu yang Tepat Ganti Oli Mobil?',
+  description,
+  image: '/images/galeri-pengerjaan-mesin.webp',
+  datePublished: '2026-11-03',
+});
+const crumbs = breadcrumbSchema([
+  { name: 'Blog', path: '/blog' },
+  { name: 'Kapan Ganti Oli Mobil', path },
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} ogTitle="Kapan Waktu yang Tepat Ganti Oli Mobil?" ogDescription={description}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <a href="/blog">Blog</a> <span aria-hidden="true">/</span> <span class="here">Kapan Ganti Oli</span>
+        </nav>
+        <p class="eyebrow">Blog &amp; Tips · Perawatan</p>
+        <h1>Kapan Waktu yang Tepat Ganti Oli Mobil?</h1>
+        <p class="lead">
+          Pertanyaan ini muncul di setiap bengkel, dan jawabannya selalu dimulai dari
+          satu tempat: buku manual mobil Anda. Artikel ini merangkum patokan umum,
+          tanda oli yang perlu diganti, dan kenapa mobil harian di kota seperti
+          Bandung cenderung butuh ganti oli lebih sering.
+        </p>
+        <p class="post-meta">Dipublikasikan 3 November 2026 · Sinar Surya Auto Care</p>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/galeri-pengerjaan-mesin.webp"
+          alt="Mekanik memeriksa ruang mesin mobil saat servis rutin dan ganti oli di Sinar Surya Auto Care Bojongsoang"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Pemeriksaan mesin sebelum ganti oli, bagian dari servis rutin kami.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section>
+          <h2>Patokan Pertama: Buku Manual Pabrikan</h2>
+          <p>
+            Tiap pabrikan menetapkan interval ganti oli berbeda, dan buku manual adalah
+            acuan yang paling aman. Di dalamnya ada dua angka yang biasanya dituliskan:
+            jarak tempuh (misalnya tiap 5.000 atau 10.000 km) dan waktu (misalnya tiap
+            6 bulan). Kedua patokan itu berlaku mana yang tercapai lebih dulu. Mobil
+            yang jarang dipakai tetap perlu oli diganti karena oli juga menua meski
+            mesinnya nyaris tidak berputar.
+          </p>
+        </section>
+
+        <section>
+          <h2>Bedanya Oli Mineral, Semi Synthetic, dan Full Synthetic</h2>
+          <ul>
+            <li><strong>Oli mineral</strong> umumnya dipatok sekitar 5.000 km sekali ganti. Harganya paling ramah dan cocok untuk mobil dengan spesifikasi oli standar pabrik.</li>
+            <li><strong>Oli semi synthetic</strong> biasanya bertahan lebih jauh dari mineral, sering dipatok di kisaran 7.000 sampai 8.000 km.</li>
+            <li><strong>Oli full synthetic</strong> paling tahan panas dan gesekan, intervalnya bisa sampai 10.000 km tergantung rekomendasi pabrikan.</li>
+          </ul>
+          <p>
+            Angka-angka di atas adalah patokan umum, bukan aturan mati. Yang menentukan
+            tetap spesifikasi pabrikan mobil Anda dan kondisi pemakaian sehari-hari.
+          </p>
+        </section>
+
+        <section>
+          <h2>Kenapa Mobil Harian di Kota Macet Ganti Oli Lebih Sering?</h2>
+          <p>
+            Pemakaian di kota dengan lalu lintas padat terhitung sebagai "severe
+            condition" di banyak buku manual. Mesin yang berhenti-jalan terus, jarak
+            tempuh pendek, dan mobil yang lama idle dalam antrean membuat oli bekerja
+            lebih berat dibanding mobil yang jalannya tol lancar. Kalau mobil Anda
+            tiap hari menembus macet, wajar kalau mekanik menyarankan interval yang
+            lebih pendek dari angka di buku manual.
+          </p>
+        </section>
+
+        <section>
+          <h2>Tanda Oli Mulai Perlu Diganti</h2>
+          <ul>
+            <li><strong>Warna dan kekentalan oli</strong> di dipstick sudah hitam pekat dan terasa terlalu encer.</li>
+            <li><strong>Volume oli turun</strong> mendekati batas minimum meski tidak ada bekas bocor di garasi.</li>
+            <li><strong>Mesin terasa kasar</strong> saat idle atau suaranya lebih keras dari biasanya.</li>
+            <li><strong>Konsumsi bahan bakar naik</strong> tanpa perubahan pola nyetir.</li>
+            <li><strong>Lampu indikator oli</strong> menyala saat mesin hidup. Ini wajib dicek segera, bukan ditunda.</li>
+          </ul>
+          <p>
+            Kalau satu dari tanda di atas muncul, jangan menunggu angka kilometer
+            berikutnya. Pemeriksaan singkat bisa memperlihatkan apakah oli memang
+            sudah waktunya ganti atau ada hal lain yang perlu dicek.
+          </p>
+        </section>
+
+        <section>
+          <h2>Jangan Lupakan Oli Matic</h2>
+          <p>
+            Mobil matic punya dua oli: oli mesin dan oli transmisi. Oli matic sering
+            terlupa padahal fungsinya menjaga perpindahan gigi tetap halus. Intervalnya
+            lebih panjang daripada oli mesin dan berbeda tiap pabrikan, jadi sekali
+            lagi buku manual jadi acuan utama. Gejala oli matic yang perlu dicek
+            biasanya perpindahan gigi tersentak atau terasa berat saat mesin dingin.
+          </p>
+        </section>
+
+        <section>
+          <h2>Perawatan Mobil Itu Kebiasaan, Bukan Kejutan</h2>
+          <p>
+            Ganti oli yang terjadwal adalah perawatan paling murah dibanding biaya
+            memperbaiki mesin yang kekurangan pelumas. Catat tanggal dan kilometer
+            servis terakhir, dan manfaatkan catatan itu untuk menentukan servis
+            berikutnya. Kalau catatannya hilang atau mobilnya beli bekas, mekanik
+            kami bisa melihat kondisi oli dan part yang terpasang, lalu memberi
+            rekomendasi yang masuk akal tanpa mengerjakan yang belum perlu.
+          </p>
+        </section>
+      </div>
+
+      <RelatedServices
+        items={[
+          { href: '/servis-rutin', label: 'Servis Rutin & Tune Up', desc: 'Ganti oli, tune up, dan filter sesuai jadwal mobil Anda.' },
+          { href: '/blog/biaya-servis-mobil', label: 'Artikel: Biaya Servis Mobil', desc: 'Faktor yang menentukan biaya servis dan cara menaksirnya.' },
+          { href: '/lokasi', label: 'Lokasi & Arah', desc: 'Titik pin bengkel dan arah perjalanan dari sekitar Bandung.' },
+        ]}
+      />
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />

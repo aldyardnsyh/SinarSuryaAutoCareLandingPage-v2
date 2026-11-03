@@ -1,0 +1,136 @@
+---
+// /blog/tanda-ac-mobil-harus-di-service — target keyword: "ac mobil kurang
+// dingin", "service ac mobil". Gejala diselaraskan dengan halaman layanan
+// /servis-ac-mobil. Tanpa klaim yang belum terverifikasi.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerLayout from '../../layouts/InnerLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { articleSchema, breadcrumbSchema } from '../../data/seo';
+import '../../styles/service-page.css';
+
+const path = '/blog/tanda-ac-mobil-harus-di-service';
+const title = '5 Tanda AC Mobil Harus Di-service - Sinar Surya Auto Care';
+const description = 'AC mobil kurang dingin, bau apek, atau bunyi aneh? Kenali 5 tanda AC mobil perlu di-service dan apa yang diperiksa mekanik. Penanganan lengkap di Bojongsoang, Bandung.';
+
+const waMessage = 'Halo, mau tanya perbaikan AC mobil';
+const service = articleSchema({
+  path,
+  headline: '5 Tanda AC Mobil Harus Di-service',
+  description,
+  image: '/images/galeri-servis-mesin.webp',
+  datePublished: '2026-11-03',
+});
+const crumbs = breadcrumbSchema([
+  { name: 'Blog', path: '/blog' },
+  { name: '5 Tanda AC Mobil Harus Di-service', path },
+]);
+---
+
+<BaseLayout title={title} description={description} path={path} ogTitle="5 Tanda AC Mobil Harus Di-service" ogDescription={description}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <a href="/blog">Blog</a> <span aria-hidden="true">/</span> <span class="here">Tanda AC Mobil</span>
+        </nav>
+        <p class="eyebrow">Blog &amp; Tips · Servis</p>
+        <h1>5 Tanda AC Mobil Harus Di-service</h1>
+        <p class="lead">
+          AC mobil jarang rusak sekaligus. Hampir selalu ada gejala kecil yang muncul
+          dulu berminggu-minggu, dan gejala itulah yang kalau dicek lebih awal bisa
+          menghemat biaya perbaikan. Berikut lima tanda yang paling sering kami temui.
+        </p>
+        <p class="post-meta">Dipublikasikan 3 November 2026 · Sinar Surya Auto Care</p>
+      </header>
+
+      <figure class="page-photo container">
+        <img
+          src="/images/galeri-servis-mesin.webp"
+          alt="Mekanik memeriksa komponen AC mobil di ruang mesin saat service AC di Sinar Surya Auto Care Bojongsoang"
+          width="1200" height="750" loading="eager" />
+        <figcaption>Pemeriksaan komponen AC di ruang mesin sebelum penanganan.</figcaption>
+      </figure>
+
+      <div class="prose container">
+        <section>
+          <h2>1. Tiupan Tidak Sedingin Dulu</h2>
+          <p>
+            Tanda paling umum. Setelan AC sudah maksimal tapi kabin tetap belum dingin
+            seperti biasanya. Penyebabnya bisa freon yang berkurang, kondensor kotor,
+            atau kompresor yang mulai lemah. Yang penting dipahami, freon tidak habis
+            sendiri tanpa alasan, jadi saat freon kurang biasanya ada titik bocor yang
+            perlu dicari, bukan cuma diisi ulang.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Dingin Hilang Cepat Setelah Diisi Freon</h2>
+          <p>
+            Kalau AC kembali dingin hanya beberapa minggu setelah isi freon lalu lemah
+            lagi, itu pola khas sistem bocor. Isi ulang di atas kebocoran hanya menunda
+            masalah dan biayanya terus berulang. Langkah yang benar adalah cek
+            kebocoran dulu, temukan titiknya, baru perbaiki dan isi freon sesuai
+            takaran pabrikan.
+          </p>
+        </section>
+
+        <section>
+          <h2>3. Bau Apek Saat AC Dinyalakan</h2>
+          <p>
+            Bau apek atau bau basah yang muncul tiap kali AC dinyalakan biasanya
+            berasal dari evaporator yang kotor dan lembap. Di situ bisa berkembang
+            sumber bau yang tiap hembusan ikut masuk ke kabin. Penanganannya cuci
+            evaporator, bukan cuma menyemprot pewangi yang menutup bau beberapa hari.
+          </p>
+        </section>
+
+        <section>
+          <h2>4. Bunyi Aneh dari Ruang Mesin Saat AC Bekerja</h2>
+          <p>
+            Bunyi desis, dengung kasar, atau ketukan saat kompresor mulai bekerja
+            layak dicurigai. Bisa dari bearing kompresor yang aus, katup yang rusak,
+            atau kipas kondensor yang mulai bermasalah. Semakin lama dibiarkan,
+            kerusakan bisa merambat ke komponen yang lebih mahal.
+          </p>
+        </section>
+
+        <section>
+          <h2>5. Lantai Kabin Basah atau Kabut Susah Hilang</h2>
+          <p>
+            AC mobil menghasilkan air bekas pengembunan yang harus keluar lewat
+            saluran pembuangan. Kalau salurannya buntu, air justru tumpah ke lantai
+            kabin dan kelembapan naik, kaca jadi susah di-defog. Kalau karpet Anda
+            basah padahal tidak hujan dan jendela tertutup, saluran AC adalah
+            tersangka utamanya.
+          </p>
+        </section>
+
+        <section>
+          <h2>Kapan Sebaiknya Cek?</h2>
+          <p>
+            Sebaiknya begitu gejala pertama terasa, bukan saat AC benar-benar mati.
+            Banyak penanganan AC di tahap awal selesai di hari yang sama, sementara
+            kerusakan yang dibiarkan bisa sampai ke kompresor yang biayanya jauh
+            lebih besar. Kalau mobil Anda menunjukkan salah satu tanda di atas,
+            ceritakan gejalanya ke WhatsApp kami, kami bantu arahkan pemeriksaannya
+            sebelum Anda datang.
+          </p>
+        </section>
+      </div>
+
+      <RelatedServices
+        items={[
+          { href: '/servis-ac-mobil', label: 'Service AC Mobil', desc: 'Cuci AC, isi freon, sampai perbaikan biar kabin dingin lagi.' },
+          { href: '/steam-wash', label: 'Steam Wash Interior', desc: 'Kabin dibersihkan uap panas, higienis dan cepat kering.' },
+          { href: '/servis-rutin', label: 'Servis Rutin & Tune Up', desc: 'Ganti oli, tune up, dan filter sesuai jadwal mobil Anda.' },
+        ]}
+      />
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />

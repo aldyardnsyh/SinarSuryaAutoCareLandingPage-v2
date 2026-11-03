@@ -1,0 +1,76 @@
+---
+// /404 — halaman tidak ditemukan. Astro mencetaknya sebagai 404.html dan
+// Vercel memakainya otomatis untuk request path yang tidak ada.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout title="Halaman Tidak Ditemukan - Sinar Surya Auto Care" description="Halaman yang Anda cari tidak ada. Kembali ke beranda atau chat WhatsApp Sinar Surya Auto Care, bengkel mobil dan cuci hidrolik di Bojongsoang, Bandung." path="/404" ogTitle="Halaman Tidak Ditemukan" ogDescription="Halaman yang Anda cari tidak ada. Kembali ke beranda Sinar Surya Auto Care.">
+  <Navbar />
+  <main class="nf container">
+    <p class="kode" aria-hidden="true">404</p>
+    <h1>Halaman Ini Tidak Ada</h1>
+    <p class="teks">
+      Mungkin tautannya sudah berubah atau salah ketik. Mobil Anda tetap bisa
+      kami layani: kembali ke beranda, atau chat WhatsApp {SITE.phone} untuk
+      tanya servis dan cuci langsung ke admin.
+    </p>
+    <div class="aksi">
+      <a class="tombol utama" href="/">Kembali ke Beranda</a>
+      <a class="tombol" href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer">Chat WhatsApp</a>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .nf {
+    padding-block: var(--space-xl) calc(var(--space-xl) * 2);
+    text-align: left;
+  }
+  .kode {
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 14vw, 8rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-accent);
+    margin: 0 0 var(--space-sm);
+  }
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 var(--space-md);
+  }
+  .teks {
+    color: var(--color-muted);
+    max-width: 56ch;
+    margin: 0 0 var(--space-lg);
+    line-height: 1.7;
+  }
+  .aksi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+  .tombol {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: border-color 0.15s ease;
+  }
+  .tombol:hover {
+    border-color: var(--color-accent);
+  }
+  .tombol.utama {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #141414;
+  }
+</style>

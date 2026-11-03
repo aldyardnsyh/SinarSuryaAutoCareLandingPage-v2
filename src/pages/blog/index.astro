@@ -1,0 +1,143 @@
+---
+// /blog — indeks artikel perawatan mobil & cuci bersih. Konten edukatif
+// yang menghubungkan pencarian umum ("perawatan mobil", "kapan ganti oli")
+// ke halaman layanan bengkel.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerLayout from '../../layouts/InnerLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { breadcrumbSchema } from '../../data/seo';
+import '../../styles/service-page.css';
+
+const path = '/blog';
+const title = 'Blog & Tips Perawatan Mobil - Sinar Surya Auto Care';
+const description = 'Artikel perawatan mobil dari bengkel Sinar Surya Auto Care Bojongsoang, Bandung: interval ganti oli, tanda AC bermasalah, cuci mobil hidrolik, sampai memahami biaya servis.';
+
+const waMessage = 'Halo, mau tanya soal servis atau cuci mobil';
+const crumbs = breadcrumbSchema([{ name: 'Blog', path }]);
+
+const TANGGAL = '3 November 2026';
+
+const posts = [
+  {
+    href: '/blog/kapan-ganti-oli-mobil',
+    title: 'Kapan Waktu yang Tepat Ganti Oli Mobil?',
+    desc: 'Patokan kilometer, beda oli mineral dan full synthetic, sampai tanda oli yang mulai tidak layak pakai.',
+    kategori: 'Perawatan',
+  },
+  {
+    href: '/blog/tanda-ac-mobil-harus-di-service',
+    title: '5 Tanda AC Mobil Harus Di-service',
+    desc: 'Tiupan kurang dingin, bau apek, sampai lantai kabin basah. Kenali gejalanya sebelum kerusakan merambat.',
+    kategori: 'Servis',
+  },
+  {
+    href: '/blog/apa-itu-cuci-mobil-hidrolik',
+    title: 'Apa Itu Cuci Mobil Hidrolik?',
+    desc: 'Metode cuci yang mengangkat mobil dengan lift supaya kolong dan sasis ikut tersiram bersih.',
+    kategori: 'Cuci & Steam',
+  },
+  {
+    href: '/blog/biaya-servis-mobil',
+    title: 'Yang Memengaruhi Biaya Servis Mobil',
+    desc: 'Jenis pekerjaan, tipe mobil, spesifikasi part, dan temuan saat pemeriksaan. Kenali faktornya sebelum datang.',
+    kategori: 'Servis',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} ogTitle="Blog & Tips Perawatan Mobil dari Sinar Surya Auto Care" ogDescription={description}>
+  <InnerLayout waMessage={waMessage}>
+    <article>
+      <header class="page-hero container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Beranda</a> <span aria-hidden="true">/</span> <span class="here">Blog</span>
+        </nav>
+        <p class="eyebrow">Blog &amp; Tips</p>
+        <h1>Tips Perawatan Mobil dari Meja Bengkel</h1>
+        <p class="lead">
+          Artikel singkat untuk pemilik mobil harian: kapan ganti oli, tanda AC yang
+          perlu dicek, sampai apa itu cuci hidrolik. Ditulis dari kebiasaan kerja kami
+          di bengkel Bojongsoang, bukan teori dari tempat lain.
+        </p>
+      </header>
+
+      <div class="postlist container">
+        {
+          posts.map((post) => (
+            <a class="postcard" href={post.href}>
+              <div class="meta">
+                <span class="kat">{post.kategori}</span>
+                <span aria-hidden="true">·</span>
+                <span>{TANGGAL}</span>
+              </div>
+              <h2>{post.title}</h2>
+              <p>{post.desc}</p>
+              <span class="baca">
+                Baca selengkapnya <span aria-hidden="true">→</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      <CtaBand waMessage={waMessage} />
+    </article>
+  </InnerLayout>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
+
+<style>
+  .postlist {
+    max-width: 68rem;
+    padding-block: var(--space-lg) var(--space-xl);
+    display: grid;
+    gap: var(--space-md);
+  }
+  .postcard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: var(--space-lg);
+    background: var(--color-panel);
+    border: 1px solid var(--color-zinc);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+  .postcard:hover {
+    border-color: var(--color-accent);
+  }
+  .meta {
+    display: flex;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .kat {
+    color: var(--color-accent);
+  }
+  .postcard h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    margin: 0.2rem 0 0;
+  }
+  .postcard p {
+    color: var(--color-muted);
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .baca {
+    margin-top: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+</style>
